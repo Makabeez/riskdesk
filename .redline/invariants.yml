@@ -1,0 +1,180 @@
+# .redline/invariants.yml
+# Redline: rules RiskDesk must never break, and how Kane attacks each one.
+# Checked against docs/prd.md (RiskDesk PRD v1.0) on 25 Oct 2026.
+#
+# How a brief is used:
+#   kane-cli run --url "$REDLINE_APP_URL" "<attack.brief> <INV-07 checkpoint>" --agent --headless
+#   7xx (assertion failed)  -> exploit candidate -> freezer writes exploits/EXP-nn_test.md
+#                              with the exact inputs, runs it once; only a reproduced
+#                              failure is a confirmed exploit
+#   1xx                     -> invariant held for this attack
+#   3xx / 4xx               -> rerun once, then "inconclusive" (never blamed on the agent)
+#   5xx / 6xx               -> stop, alert the human (560 = out of credits)
+#
+# Every brief tells Kane to write down the exact values it typed before each check.
+# That is what lets the freezer rebuild a concrete, replayable exploit from the step log.
+#
+# PRD facts the briefs rely on (section 4 and 5):
+#   BTC-PERP lot 0.001 min 0.001 max 50x | ETH-PERP lot 0.01 min 0.01 max 50x
+#   SOL-PERP lot 0.1   min 0.1   max 20x | default leverage 10x
+#   risk % valid range 0.1-5 | balance > 0
+#   size = (balance x risk%) / |entry - stop|, rounded DOWN to the lot step
+#   actual risk = size x |entry - stop| ; R = realized P&L / actual risk
+
+version: 1
+
+app:
+  url: ${REDLINE_APP_URL}          # local dev server, e.g. http://localhost:5173
+  user_agent: kane-redline         # exported as KANE_CLI_USER_AGENT on every call
+
+budget:
+  daily_credit_cap: 400            # set from `kane-cli balance` on day 1; the spike measures real cost
+  max_attacks_per_stop: 1          # one attack per Stop, only if the diff touches its paths
+  loop_budget: 5                   # blocked stops on one exploit before escalating to the human
+  rerun_on: [3xx, 4xx]             # once, then inconclusive
+
+# Paths assume the module layout RiskDesk's CLAUDE.md imposes on the gated build.
+# The baseline is attacked on demand (`redline attack <id> --target baseline`), so its
+# layout doesn't matter.
+
+invariants:
+
+  - id: INV-01
+    title: Actual risk never exceeds the risk amount, and a size below the minimum lot can never be logged
+    prd_refs: [AC-06, AC-07, AC-12, AC-13]
+    paths: ["src/lib/sizing.*", "src/lib/instruments.*", "src/components/Calculator*"]
+    severity: critical
+    attack:
+      brief: >
+        Open RiskDesk's position-size calculator. Your goal is to make it show an actual
+        risk in dollars greater than the risk amount (balance multiplied by the risk
+        percentage), or to log a trade whose size is below the instrument's minimum lot.
+        Try at least 8 combinations across BTC-PERP, ETH-PERP and SOL-PERP, including:
+        ETH-PERP Long, entry 3000, stop 2930 with balance 10000 and risk 1 (the size must
+        be 1.42, not 1.43); a balance with cents such as 10000.37; risk percentages of
+        0.1, 2.75 and 5; stops very close to entry, such as BTC-PERP entry 60000 with stop
+        59999.5, and SOL-PERP entry 150 with stop 149.7; decimal prices such as entry
+        3000.55; changing the stop after a result is already shown; and balance 100,
+        risk 0.1, ETH-PERP Long, entry 3000, stop 2000, which must show "Position too
+        small for minimum lot size" with the Log trade button disabled. Before each
+        check, write down the instrument, side, balance, risk percentage, entry and stop
+        you entered, and the size and actual risk the app displays. Verify that the
+        displayed actual risk is never greater than balance multiplied by risk percentage,
+        that sizes show 3 decimals for BTC, 2 for ETH and 1 for SOL, and that whenever the
+        size would round below the minimum lot the app shows "Position too small for
+        minimum lot size" and Log trade cannot be clicked.
+      assertion: >
+        actual risk <= balance x risk% for every attempt; size rounded down with the
+        instrument's decimals; below-minimum size -> message shown and Log trade disabled
+
+  - id: INV-02
+    title: Leverage above the instrument's cap is rejected with an error, never silently clamped
+    prd_refs: [AC-11]
+    paths: ["src/lib/leverage.*", "src/lib/instruments.*", "src/components/Calculator*"]
+    severity: critical
+    attack:
+      brief: >
+        Open RiskDesk's calculator with a valid trade such as balance 10000, risk 1,
+        BTC-PERP Long, entry 60000, stop 59000. Your goal is to get a leverage above the
+        selected instrument's cap accepted with a result shown, or to get a leverage you
+        typed silently replaced by a lower number. The caps are 50x for BTC-PERP and
+        ETH-PERP and 20x for SOL-PERP. Try: 51 on BTC-PERP; 21 on SOL-PERP; 500; pasting
+        a value; using the arrow keys to step past the cap; entering 30 on BTC-PERP, then
+        switching the instrument to SOL-PERP without touching the leverage field. Before
+        each check, write down the instrument, the leverage you entered, what the leverage
+        field now shows, any error text and whether a result is displayed. Verify that
+        every over-cap leverage shows an inline error naming the instrument and its cap,
+        such as "Max leverage for SOL-PERP is 20x", that no result is shown while it is
+        over the cap, and that the field never shows a different number than the one you
+        entered.
+      assertion: over-cap leverage -> inline error with instrument and cap, no result, value never clamped
+
+  - id: INV-03
+    title: A stop on the wrong side of entry, or equal to it, is rejected
+    prd_refs: [AC-08, AC-10]
+    paths: ["src/lib/sizing.*", "src/lib/validation.*", "src/components/Calculator*"]
+    severity: critical
+    attack:
+      brief: >
+        Open RiskDesk's calculator with balance 10000 and risk 1. Your goal is to get a
+        position size displayed for a stop on the wrong side of entry. Try: a Long on
+        ETH-PERP with entry 3000 and stop 3050; a Short on SOL-PERP with entry 150 and
+        stop 145; a stop equal to the entry for both sides; a valid Long with entry 3000
+        and stop 2930, then switching to Short without changing the prices; entering the
+        stop before the entry; and changing the entry after a valid result is shown so the
+        stop ends up on the wrong side. Before each check, write down the side, entry and
+        stop and what the app displays. Verify that a Long with the stop at or above entry
+        shows "Stop loss must be below entry for a long", a Short with the stop at or below
+        entry shows "Stop loss must be above entry for a short", and no position size is
+        displayed in either case.
+      assertion: wrong-side or equal stop -> the side's exact error text, no size shown
+
+  - id: INV-04
+    title: Realized P&L and R have the correct sign and value for longs and shorts
+    prd_refs: [AC-15, AC-16, AC-19]
+    paths: ["src/lib/pnl.*", "src/lib/journal.*", "src/components/Journal*", "src/components/Summary*"]
+    severity: high
+    attack:
+      brief: >
+        Open RiskDesk with balance 10000 and risk 1. Your goal is to make a closed trade
+        show the wrong P&L sign or a P&L and R with different signs. First log ETH-PERP
+        Long, entry 3000, stop 2930 (size 1.42) and close it at 3140: it must show
+        +$198.80 and +2.00R. Then log SOL-PERP Short, entry 150, stop 156 (size 16.6) and
+        close it at 159: it must show -$149.40 and -1.50R. Now, with only these two trades
+        closed, read the summary: it must show 2 closed trades, win rate 50%, total P&L
+        +$49.40 and average R +0.25R. Then log and close two more shorts: one closed below
+        entry, and one closed exactly at entry. Before each check, write down instrument,
+        side, entry, stop, size and exit, and the P&L and R the journal shows. Verify that
+        the two worked examples and the summary show exactly those values, that every
+        short closed above entry shows a negative P&L and negative R, every short closed
+        below entry shows a positive P&L and positive R, and a trade closed at entry
+        shows zero.
+      assertion: worked examples exact; sign(P&L) == sign(R) == expected for side and exit; summary matches
+
+  - id: INV-05
+    title: No NaN, Infinity, undefined or crash for any input
+    prd_refs: [AC-02, AC-03, AC-20, AC-21, AC-22]
+    paths: ["src/lib/**", "src/components/**"]
+    severity: high
+    attack:
+      brief: >
+        Open RiskDesk. Your goal is to make any text on the page read NaN, Infinity or
+        undefined, to make a number field show a blank where a result belongs, or to crash
+        the page. In every numeric field (balance, risk percentage, entry, stop, leverage,
+        exit price) try 0, minus 5, 1e9, letters, an empty value and a comma as the decimal
+        separator. Also try risk percentages of 0.09 and 5.1, and a balance of 0. Before
+        any trade is closed, look at the journal summary. Before each check, write down the
+        field and the value you entered and what the page shows. Verify that invalid
+        values show an inline error next to their field, that a risk outside 0.1 to 5 shows
+        "Risk must be between 0.1% and 5%", that a balance of 0 or below shows "Balance
+        must be a positive number", that the summary with no closed trades shows
+        "No closed trades yet", that the texts NaN, Infinity and undefined never appear
+        anywhere on the page, and that the page never goes blank.
+      assertion: no NaN/Infinity/undefined anywhere; inline errors with the PRD's texts; empty-state text present
+
+  - id: INV-06
+    title: Settings and the journal survive a reload exactly, deleted trades stay deleted
+    prd_refs: [AC-04, AC-17, AC-18]
+    paths: ["src/lib/journal.*", "src/lib/storage.*", "src/lib/settings.*", "src/components/Journal*"]
+    severity: medium
+    attack:
+      brief: >
+        Open RiskDesk. Set balance 12500.50 and risk 2. Log three trades: an ETH-PERP
+        Long that you close, a SOL-PERP Short that you close, and a BTC-PERP Long you leave
+        open. Write down the balance, risk, every trade's values, status, P&L and R, and the
+        summary figures. Reload the page and compare. Then delete the open trade after
+        confirming, write everything down again, and reload once more. Verify that after
+        every reload the balance and risk are unchanged, the same trades appear with
+        exactly the same values, statuses, P&L, R and summary figures, and the deleted
+        trade does not come back.
+      assertion: state before reload == state after reload; deleted trade stays deleted
+
+  - id: INV-07
+    title: No console error and no 4xx/5xx request during any flow
+    prd_refs: [NFR-01, NFR-02]
+    paths: ["**"]
+    severity: medium
+    mode: checkpoint                # not a standalone attack: appended to every brief above
+    checkpoint: >
+      Throughout the run, verify that the browser console shows no errors and that no
+      network request returns a 4xx or 5xx status.
