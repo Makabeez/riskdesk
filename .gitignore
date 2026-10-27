@@ -1,0 +1,4 @@
+# Kane evidence packs (screenshots/video, ~3 MB per run) stay local
+.redline/cases/**/.testmuai/
+# Kane internals: may hold signed artifact URLs; reviewed before any publish
+.redline/cases/**/output-*/.internal/
