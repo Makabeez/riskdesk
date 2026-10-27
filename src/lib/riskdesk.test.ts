@@ -4,10 +4,10 @@ import { add, cmp, fromInt, mul, parseDecimal, ratio, toPlain } from './decimal'
 import { formatMoney, formatPercent, formatPrice, formatR, formatSignedMoney, formatSize, MINUS } from './format';
 import { getInstrument, INSTRUMENTS } from './instruments';
 import { closeTrade, createTrade, isTrade, summarize, tradePnl, tradeR, tradeRisk, type Trade } from './journal';
-import { readNumber, validateBalance, validateLeverage, validatePrice, validateRisk } from './validation';
+import { readNumber, validateBalance, validateFee, validateLeverage, validatePrice, validateRisk } from './validation';
 
 const dec = (s: string) => parseDecimal(s)!;
-const DEFAULT_ACCOUNT: AccountInputs = { balance: '10,000.00', risk: '1' };
+const DEFAULT_ACCOUNT: AccountInputs = { balance: '10,000.00', risk: '1', fee: '0' };
 
 function calc(account: Partial<AccountInputs>, inputs: Partial<CalculatorInputs>) {
   return evaluate(
@@ -29,7 +29,7 @@ function sized(account: Partial<AccountInputs>, inputs: Partial<CalculatorInputs
     margin: formatMoney(sizing.margin),
     tradeFor: () => {
       const r = evaluation.result as Extract<typeof evaluation.result, { kind: 'sized' }>;
-      return createTrade(evaluation.instrument, inputs.side ?? 'long', r.sizing, r.entry, r.stop, r.leverage);
+      return createTrade(evaluation.instrument, inputs.side ?? 'long', r.sizing, r.entry, r.stop, r.leverage, r.feePct);
     },
   };
 }
@@ -278,5 +278,96 @@ describe('UC-5 / UC-6 journal', () => {
   it('stores prices exactly', () => {
     expect(toPlain(dec('60000'))).toBe('60000');
     expect(toPlain(dec('0.00012300'))).toBe('0.000123');
+  });
+});
+
+describe('CR-1 trading fee per side', () => {
+  it('AC-23 fee defaults to 0% and must be between 0% and 0.1%', () => {
+    for (const text of ['-0.01', '0.11', '1', 'abc', '']) {
+      expect(validateFee(text)).toEqual({ ok: false, error: 'Fee must be between 0% and 0.1%' });
+    }
+    for (const text of ['0', '0.05', '0.1']) {
+      expect(validateFee(text).ok).toBe(true);
+    }
+    const evaluation = calc({ fee: '0.5' }, { entry: '60000', stop: '59000' });
+    expect(evaluation.errors.fee).toBe('Fee must be between 0% and 0.1%');
+    expect(evaluation.result.kind).toBe('invalid');
+  });
+
+  it('AC-24/AC-25 ETH long with a 0.05% fee', () => {
+    const r = sized({ fee: '0.05' }, { instrumentId: 'ETH-PERP', side: 'long', entry: '3000', stop: '2930' });
+    expect(r.size).toBe('1.37');
+    expect(r.actualRisk).toBe('$99.96');
+    // AC-07 still holds, including fees.
+    if (r.evaluation.result.kind === 'sized') {
+      expect(cmp(r.evaluation.result.sizing.actualRisk, r.evaluation.result.sizing.riskAmount)).toBeLessThanOrEqual(0);
+    }
+    // AC-06 still holds unchanged when fee is 0.
+    const zero = sized({ fee: '0' }, { instrumentId: 'ETH-PERP', side: 'long', entry: '3000', stop: '2930' });
+    expect(zero.size).toBe('1.42');
+    expect(zero.actualRisk).toBe('$99.40');
+  });
+
+  it('AC-26 BTC long with a 0.05% fee', () => {
+    const r = sized({ fee: '0.05' }, { instrumentId: 'BTC-PERP', side: 'long', entry: '60000', stop: '59000' });
+    expect(r.size).toBe('0.094');
+    expect(r.actualRisk).toBe('$99.59');
+  });
+
+  it('AC-27 journal P&L and R are net of entry and exit fees', () => {
+    const trade = closeTrade(
+      sized({ fee: '0.05' }, { instrumentId: 'ETH-PERP', side: 'long', entry: '3000', stop: '2930' }).tradeFor(),
+      dec('3140'),
+    );
+    expect(formatSignedMoney(tradePnl(trade)!)).toBe('+$187.59');
+    expect(formatR(tradeR(trade)!)).toBe('+1.88R');
+  });
+
+  it('AC-28 a logged trade keeps its own fee rate', () => {
+    const trade = sized({ fee: '0.05' }, { instrumentId: 'ETH-PERP', side: 'long', entry: '3000', stop: '2930' }).tradeFor();
+    expect(trade.fee).toBe('0.05');
+    const closed = closeTrade(trade, dec('3140'));
+    expect(formatR(tradeR(closed)!)).toBe('+1.88R');
+    // Round-trip through JSON preserves the fee rate.
+    const restored = JSON.parse(JSON.stringify(closed));
+    expect(isTrade(restored)).toBe(true);
+    expect(formatSignedMoney(tradePnl(restored)!)).toBe('+$187.59');
+  });
+
+  it('a legacy trade with no fee field is read as 0%', () => {
+    const legacy = {
+      id: 'x', instrument: 'ETH-PERP', side: 'long', size: '1.42', entry: '3000', stop: '2930',
+      leverage: '10', status: 'closed', exit: '3140', openedAt: '2026-01-01T00:00:00.000Z', closedAt: '2026-01-01T00:00:00.000Z',
+    };
+    expect(isTrade(legacy)).toBe(true);
+    expect(formatSignedMoney(tradePnl(legacy as Trade)!)).toBe('+$198.80');
+    // A fee of 'abc' is rejected; a fee of '-0.1' is rejected.
+    expect(isTrade({ ...legacy, fee: 'abc' })).toBe(false);
+    expect(isTrade({ ...legacy, fee: '-0.1' })).toBe(false);
+    expect(isTrade({ ...legacy, fee: '0.05' })).toBe(true);
+  });
+});
+
+describe('CR-2 XRP-PERP', () => {
+  it('AC-29 whole-number sizes with lot step 1', () => {
+    const xrp = getInstrument('XRP-PERP')!;
+    expect(xrp.sizeDecimals).toBe(0);
+    expect(xrp.maxLeverage).toBe(25);
+    const r = sized({}, { instrumentId: 'XRP-PERP', side: 'long', entry: '0.50', stop: '0.48' });
+    expect(r.size).toBe('5,000');
+    expect(r.actualRisk).toBe('$100.00');
+  });
+
+  it('AC-30 the minimum size (10) is not the lot step (1)', () => {
+    const evaluation = calc({ balance: '100', risk: '0.1' }, { instrumentId: 'XRP-PERP', side: 'long', entry: '0.50', stop: '0.48' });
+    if (evaluation.result.kind !== 'sized') throw new Error('expected a sized result');
+    expect(evaluation.result.sizing.belowMinimum).toBe(true);
+  });
+
+  it('AC-31 leverage above 25x on XRP-PERP is an error', () => {
+    const evaluation = calc({}, { instrumentId: 'XRP-PERP', side: 'long', entry: '0.50', stop: '0.48', leverage: '26' });
+    expect(evaluation.errors.leverage).toBe('Max leverage for XRP-PERP is 25x');
+    expect(evaluation.result.kind).toBe('invalid');
+    expect(calc({}, { instrumentId: 'XRP-PERP', side: 'long', entry: '0.50', stop: '0.48', leverage: '25' }).errors.leverage).toBeUndefined();
   });
 });

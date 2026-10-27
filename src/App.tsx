@@ -51,7 +51,7 @@ export default function App() {
   const logTrade = () => {
     const { result, instrument } = evaluation;
     if (result.kind !== 'sized' || result.sizing.belowMinimum) return;
-    const trade = createTrade(instrument, inputs.side, result.sizing, result.entry, result.stop, result.leverage);
+    const trade = createTrade(instrument, inputs.side, result.sizing, result.entry, result.stop, result.leverage, result.feePct);
     setTrades((current) => [trade, ...current]);
     const size = formatSize(result.sizing.size, instrument.sizeDecimals);
     announce(`Logged ${instrument.id} ${inputs.side === 'long' ? 'Long' : 'Short'} · ${size} ${instrument.base}.`);

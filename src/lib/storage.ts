@@ -4,7 +4,7 @@ import { isTrade, type Trade } from './journal';
 export const ACCOUNT_KEY = 'riskdesk.account.v1';
 export const JOURNAL_KEY = 'riskdesk.journal.v1';
 
-export const DEFAULT_ACCOUNT: AccountInputs = { balance: '10,000.00', risk: '1' };
+export const DEFAULT_ACCOUNT: AccountInputs = { balance: '10,000.00', risk: '1', fee: '0' };
 
 // Storage can be unavailable (private mode, blocked site data) or full; the
 // app keeps working in memory either way.
@@ -30,6 +30,8 @@ export function loadAccount(): AccountInputs {
   return {
     balance: typeof stored?.balance === 'string' ? stored.balance : DEFAULT_ACCOUNT.balance,
     risk: typeof stored?.risk === 'string' ? stored.risk : DEFAULT_ACCOUNT.risk,
+    // Older stored accounts have no fee; defaulting to 0 keeps them behaving as v1.0.
+    fee: typeof stored?.fee === 'string' ? stored.fee : DEFAULT_ACCOUNT.fee,
   };
 }
 
@@ -39,7 +41,10 @@ export function saveAccount(account: AccountInputs): void {
 
 export function loadJournal(): Trade[] {
   const stored = read(JOURNAL_KEY);
-  return Array.isArray(stored) ? stored.filter(isTrade) : [];
+  if (!Array.isArray(stored)) return [];
+  // v1.0 wrote trades without a fee field; migrate them to 0% so later code
+  // can treat every trade uniformly without checking for undefined.
+  return stored.filter(isTrade).map((trade) => (trade.fee === undefined ? { ...trade, fee: '0' } : trade));
 }
 
 export function saveJournal(trades: readonly Trade[]): void {
