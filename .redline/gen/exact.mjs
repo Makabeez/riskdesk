@@ -62,23 +62,26 @@ export const INSTRUMENTS = {
   'BTC-PERP': { lot: '0.001', dp: 3, maxLev: 50, unit: 'BTC' },
   'ETH-PERP': { lot: '0.01', dp: 2, maxLev: 50, unit: 'ETH' },
   'SOL-PERP': { lot: '0.1', dp: 1, maxLev: 20, unit: 'SOL' },
+  'XRP-PERP': { lot: '1', min: '10', dp: 0, maxLev: 25, unit: 'XRP' }, // v1.1: minimum != lot step
 };
 
-// PRD section 5, exactly.
-export function size({ balance, risk, instrument, side, entry, stop }) {
+// PRD section 5 (v1.0) and change request v1.1 (fee per side), exactly.
+// cost per unit = |entry - stop| + f * (entry + stop), with f = fee% / 100 (fee defaults to 0 = v1.0).
+export function size({ balance, risk, instrument, side, entry, stop, fee = '0' }) {
   const ins = INSTRUMENTS[instrument];
   const B = Frac.of(balance), R = Frac.of(risk), E = Frac.of(entry), S = Frac.of(stop);
-  const lot = Frac.of(ins.lot);
+  const lot = Frac.of(ins.lot), min = Frac.of(ins.min ?? ins.lot);
+  const f = Frac.of(fee).div(new Frac(100n));
   const budget = B.mul(R).div(new Frac(100n));
   const wrongSide = side === 'Long' ? S.cmp(E) >= 0 : S.cmp(E) <= 0;
   if (wrongSide) return { budget, wrongSide: true };
-  const perUnit = E.sub(S).abs();
+  const perUnit = E.sub(S).abs().add(f.mul(E.add(S)));
   const lots = budget.div(perUnit).div(lot).floor();
   const sz = new Frac(lots).mul(lot);
   const actual = sz.mul(perUnit);
   return {
     budget, perUnit, lots, size: sz, actual,
-    belowMin: lots < 1n,
+    belowMin: sz.cmp(min) < 0,
     sizeStr: sz.toFixedExact(ins.dp),
     unit: ins.unit,
   };

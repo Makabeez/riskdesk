@@ -1,0 +1,199 @@
+[
+  {
+    "id": "V01",
+    "invariant": "V1.1",
+    "ac": "AC-25",
+    "file": "V01-fee-example-on-eth-1-37-not-1-42_test.md",
+    "title": "Fee example on ETH: 1.37, not 1.42",
+    "why": "Ignoring the fee sizes 1.42 ETH, which really risks $103.61 once fees are paid; the budget is $100.00.",
+    "inputs": {
+      "balance": "10000",
+      "risk": "1",
+      "fee": "0.05",
+      "instrument": "ETH-PERP",
+      "side": "Long",
+      "entry": "3000",
+      "stop": "2930"
+    },
+    "expect": {
+      "size": "1.37 ETH",
+      "actualRisk": "$99.96",
+      "costPerUnit": "72.965000"
+    }
+  },
+  {
+    "id": "V02",
+    "invariant": "V1.1",
+    "ac": "AC-26",
+    "file": "V02-fee-example-on-btc-0-094_test.md",
+    "title": "Fee example on BTC: 0.094",
+    "why": "Ignoring the fee sizes 0.100 BTC, which really risks $105.95 once fees are paid; the budget is $100.00.",
+    "inputs": {
+      "balance": "10000",
+      "risk": "1",
+      "fee": "0.05",
+      "instrument": "BTC-PERP",
+      "side": "Long",
+      "entry": "60000",
+      "stop": "59000"
+    },
+    "expect": {
+      "size": "0.094 BTC",
+      "actualRisk": "$99.59",
+      "costPerUnit": "1059.500000"
+    }
+  },
+  {
+    "id": "V03",
+    "invariant": "V1.1",
+    "ac": "AC-24",
+    "file": "V03-fee-charged-on-both-sides-not-entry-only_test.md",
+    "title": "Fee charged on both sides, not entry only",
+    "why": "Correct size 4.34 ETH; charging the fee on entry only sizes 4.65 ETH, which really risks $106.90 on a $100.00 budget.",
+    "inputs": {
+      "balance": "10000",
+      "risk": "1",
+      "fee": "0.05",
+      "instrument": "ETH-PERP",
+      "side": "Long",
+      "entry": "3000",
+      "stop": "2980"
+    },
+    "expect": {
+      "size": "4.34 ETH",
+      "actualRisk": "$99.78",
+      "costPerUnit": "22.990000"
+    }
+  },
+  {
+    "id": "V04",
+    "invariant": "V1.1",
+    "ac": "AC-24",
+    "file": "V04-fees-on-a-short_test.md",
+    "title": "Fees on a short",
+    "why": "Cost per unit is |entry - stop| + f x (entry + stop) whatever the side.",
+    "inputs": {
+      "balance": "10000",
+      "risk": "1",
+      "fee": "0.05",
+      "instrument": "ETH-PERP",
+      "side": "Short",
+      "entry": "3000",
+      "stop": "3020"
+    },
+    "expect": {
+      "size": "4.34 ETH",
+      "actualRisk": "$99.86",
+      "costPerUnit": "23.010000"
+    }
+  },
+  {
+    "id": "V05",
+    "invariant": "V1.1",
+    "ac": "AC-23",
+    "file": "V05-fee-above-0-1-is-refused_test.md",
+    "title": "Fee above 0.1% is refused",
+    "why": "An unchecked fee field accepts 0.11% and sizes anyway.",
+    "inputs": {
+      "balance": "10000",
+      "risk": "1",
+      "fee": "0.11",
+      "instrument": "ETH-PERP",
+      "side": "Long",
+      "entry": "3000",
+      "stop": "2930"
+    },
+    "expect": {
+      "message": "Fee must be between 0% and 0.1%",
+      "result": "none"
+    }
+  },
+  {
+    "id": "V06",
+    "invariant": "V1.1",
+    "ac": "AC-29",
+    "file": "V06-xrp-sizes-in-whole-units_test.md",
+    "title": "XRP sizes in whole units",
+    "why": "Lot step 1: the size must be a whole number with no decimals.",
+    "inputs": {
+      "balance": "10000",
+      "risk": "1",
+      "fee": "0",
+      "instrument": "XRP-PERP",
+      "side": "Long",
+      "entry": "0.50",
+      "stop": "0.48"
+    },
+    "expect": {
+      "size": "5000 XRP",
+      "actualRisk": "$100.00",
+      "costPerUnit": "0.020000"
+    }
+  },
+  {
+    "id": "V07",
+    "invariant": "V1.1",
+    "ac": "AC-30",
+    "file": "V07-xrp-below-the-minimum-of-10-not-the-lot-_test.md",
+    "title": "XRP below the minimum of 10 (not the lot step of 1)",
+    "why": "Raw size is 5 XRP: valid for the lot step, below the minimum. Checking the lot step instead of the minimum lets it through.",
+    "inputs": {
+      "balance": "100",
+      "risk": "0.1",
+      "fee": "0",
+      "instrument": "XRP-PERP",
+      "side": "Long",
+      "entry": "0.50",
+      "stop": "0.48"
+    },
+    "expect": {
+      "message": "Position too small for minimum lot size",
+      "result": "none"
+    }
+  },
+  {
+    "id": "V08",
+    "invariant": "V1.1",
+    "ac": "AC-31",
+    "file": "V08-xrp-leverage-cap-is-25x_test.md",
+    "title": "XRP leverage cap is 25x",
+    "why": "A new instrument added without its own cap falls back to another instrument's 50x.",
+    "inputs": {
+      "balance": "10000",
+      "risk": "1",
+      "fee": "0",
+      "instrument": "XRP-PERP",
+      "side": "Long",
+      "entry": "0.50",
+      "stop": "0.48",
+      "leverage": 26
+    },
+    "expect": {
+      "message": "Max leverage for XRP-PERP is 25x",
+      "result": "none"
+    }
+  },
+  {
+    "id": "V09",
+    "invariant": "V1.1",
+    "ac": "AC-27, AC-28",
+    "file": "V09-net-p-l-after-fees-pinned-to-the-trade_test.md",
+    "title": "Net P&L after fees, pinned to the trade",
+    "why": "P&L must subtract fees on entry and exit, and keep the fee rate the trade was logged with.",
+    "inputs": {
+      "balance": "10000",
+      "risk": "1",
+      "fee": "0.05",
+      "instrument": "ETH-PERP",
+      "side": "Long",
+      "entry": "3000",
+      "stop": "2930",
+      "exit": "3140"
+    },
+    "expect": {
+      "size": "1.37 ETH",
+      "pnl": "+$187.59",
+      "r": "+1.88R"
+    }
+  }
+]
