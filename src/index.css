@@ -1,0 +1,291 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --text: #16181d;
+  --muted: #5b6170;
+  --border: #d9dde5;
+  --accent: #1f6feb;
+  --danger: #c62828;
+  --ok: #1a7f37;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0f1115;
+    --panel: #181b22;
+    --text: #e8eaf0;
+    --muted: #9aa1b0;
+    --border: #2c313c;
+    --accent: #58a6ff;
+    --danger: #ff7b72;
+    --ok: #3fb950;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0f1115;
+  --panel: #181b22;
+  --text: #e8eaf0;
+  --muted: #9aa1b0;
+  --border: #2c313c;
+  --accent: #58a6ff;
+  --danger: #ff7b72;
+  --ok: #3fb950;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.6rem;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+header p {
+  margin: 4px 0 0;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  min-width: 0;
+}
+
+.grid-2 {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 640px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.field {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.field label,
+.field legend {
+  font-size: 14px;
+  color: var(--muted);
+  padding: 0;
+}
+
+.field.grow {
+  flex: 1 1 160px;
+}
+
+input,
+select {
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+input[aria-invalid='true'] {
+  border-color: var(--danger);
+}
+
+.radio-row {
+  display: flex;
+  gap: 16px;
+  padding-top: 6px;
+}
+
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text) !important;
+  font-size: 15px !important;
+}
+
+.radio input {
+  width: auto;
+}
+
+button {
+  font: inherit;
+  padding: 10px 14px;
+  margin-top: 12px;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--accent);
+}
+
+button.danger {
+  background: var(--danger);
+  border-color: var(--danger);
+}
+
+.field-error {
+  color: var(--danger);
+  font-size: 13px;
+  margin: 0;
+}
+
+.hint {
+  color: var(--muted);
+  margin: 0;
+  font-size: 14px;
+}
+
+.result {
+  margin-top: 16px;
+  min-height: 40px;
+}
+
+.stats {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  margin: 0;
+}
+
+.stats dt,
+.details dt {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.stats dd,
+.details dd {
+  margin: 2px 0 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.trades {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.trade {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 0;
+}
+
+.trade-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.badge.closed {
+  color: var(--ok);
+  border-color: var(--ok);
+}
+
+.details {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 12px 0 0;
+}
+
+@media (min-width: 640px) {
+  .details {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.details dd {
+  margin: 2px 0 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.actions button {
+  margin-top: 0;
+}
+
+.positive {
+  color: var(--ok) !important;
+}
+
+.negative {
+  color: var(--danger) !important;
+}
