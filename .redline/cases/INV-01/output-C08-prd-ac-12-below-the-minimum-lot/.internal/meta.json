@@ -1,0 +1,18 @@
+{
+  "commit_id": "b34e5a74-020d-4946-bd06-25b346209a2b",
+  "test_id": "b6cfa92e-4345-44e7-a406-0b79049932c4",
+  "testcase_id": "01M5ZKJSMDZETJ12CZR8B7G07Q",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "C08-prd-ac-12-below-the-minimum-lot",
+  "executions": [
+    {
+      "execution_id": "815f09ae-1ddf-4b2a-9dc0-dc9c32066c58",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-28T22:46:42.671Z"
+    }
+  ]
+}

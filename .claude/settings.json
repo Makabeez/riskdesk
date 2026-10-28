@@ -1,0 +1,27 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/vps/kane-redline/bin/redline.mjs\" hook pre-tool-use",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/vps/kane-redline/bin/redline.mjs\" hook stop",
+            "timeout": 1200
+          }
+        ]
+      }
+    ]
+  }
+}

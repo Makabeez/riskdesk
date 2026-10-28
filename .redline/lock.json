@@ -1,0 +1,10 @@
+{
+  "created": "2026-10-28T22:50:21.403Z",
+  "files": {
+    ".redline/cases/INV-01/C04-float-trap-on-sol-exact-lot-count-floats_test.md": "0280fefb2b5573112e2fc15b8597e43a4357aab2ac0031eede740d00dff3438f",
+    ".redline/cases/INV-01/C05-float-trap-on-eth-with-a-30-cent-stop_test.md": "8a9c4fbe606c6847688bece3f32c63633994c9a314bd34a5000779e02bae635d",
+    ".redline/cases/INV-01/C08-prd-ac-12-below-the-minimum-lot_test.md": "aa49de5ba0770d90703b0a7670a30f1ddb3b9da9c01ce0e2fcde31a285e7c961",
+    ".redline/cases/INV-01/cases.json": "cc8ebb9f7a31ac3e718700e560da5e2ea4f921df684e24b8f6dc6ba6c0cee50e",
+    ".redline/config.json": "60091adab00a0dafc6d74ece44613366ef5896d8c46742a53396de0f76792f4a"
+  }
+}

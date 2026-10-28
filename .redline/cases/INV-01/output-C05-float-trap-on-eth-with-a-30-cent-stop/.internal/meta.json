@@ -1,0 +1,18 @@
+{
+  "commit_id": "49d9f1aa-cdd4-4ef7-9311-a93ecb68180e",
+  "test_id": "ee2b2b62-78a7-4c87-ba52-9794cc24f142",
+  "testcase_id": "01M5ZK9APQ80Z8YDCA8QTGB0T8",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "C05-float-trap-on-eth-with-a-30-cent-stop",
+  "executions": [
+    {
+      "execution_id": "d5fd7b5f-bc7e-424b-9c23-d5ececde01f9",
+      "run_kind": "author",
+      "status": "failed",
+      "valid": true,
+      "at": "2026-10-28T22:44:59.212Z"
+    }
+  ]
+}

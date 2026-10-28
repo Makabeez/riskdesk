@@ -1,0 +1,195 @@
+[
+  {
+    "id": "C01",
+    "invariant": "INV-01",
+    "file": "C01-prd-ac-06-worked-example-round-down-not-_test.md",
+    "title": "PRD AC-06 worked example: round down, not to nearest",
+    "why": "Round-to-nearest gives 1.43 ETH and $100.10 risk, over the $100.00 budget.",
+    "inputs": {
+      "balance": "10000",
+      "risk": "1",
+      "instrument": "ETH-PERP",
+      "side": "Long",
+      "entry": "3000",
+      "stop": "2930"
+    },
+    "expect": {
+      "size": "1.42 ETH",
+      "actualRisk": "99.40",
+      "budget": "100.000000"
+    }
+  },
+  {
+    "id": "C02",
+    "invariant": "INV-01",
+    "file": "C02-prd-ac-05-worked-example-risk-exactly-eq_test.md",
+    "title": "PRD AC-05 worked example: risk exactly equal to budget",
+    "why": "Raw size lands exactly on a lot step; actual risk must equal the budget, not exceed it.",
+    "inputs": {
+      "balance": "10000",
+      "risk": "1",
+      "instrument": "BTC-PERP",
+      "side": "Long",
+      "entry": "60000",
+      "stop": "59000"
+    },
+    "expect": {
+      "size": "0.100 BTC",
+      "actualRisk": "100.00",
+      "budget": "100.000000"
+    }
+  },
+  {
+    "id": "C03",
+    "invariant": "INV-01",
+    "file": "C03-prd-ac-09-worked-example-short-on-sol_test.md",
+    "title": "PRD AC-09 worked example: short on SOL",
+    "why": "Short sizing uses |entry - stop| with the stop above entry.",
+    "inputs": {
+      "balance": "10000",
+      "risk": "1",
+      "instrument": "SOL-PERP",
+      "side": "Short",
+      "entry": "150",
+      "stop": "156"
+    },
+    "expect": {
+      "size": "16.6 SOL",
+      "actualRisk": "99.60",
+      "budget": "100.000000"
+    }
+  },
+  {
+    "id": "C04",
+    "invariant": "INV-01",
+    "file": "C04-float-trap-on-sol-exact-lot-count-floats_test.md",
+    "title": "Float trap on SOL: exact lot count, floats undershoot",
+    "why": "Exact size is 100.0 SOL; Math.floor on doubles gives 999 lots (99.9 SOL).",
+    "inputs": {
+      "balance": "10000",
+      "risk": "0.3",
+      "instrument": "SOL-PERP",
+      "side": "Long",
+      "entry": "150",
+      "stop": "149.7"
+    },
+    "expect": {
+      "size": "100.0 SOL",
+      "actualRisk": "30.00",
+      "budget": "30.000000"
+    }
+  },
+  {
+    "id": "C05",
+    "invariant": "INV-01",
+    "file": "C05-float-trap-on-eth-with-a-30-cent-stop_test.md",
+    "title": "Float trap on ETH with a 30-cent stop",
+    "why": "Exact size is 25.00 ETH; Math.floor on doubles gives 2499 lots.",
+    "inputs": {
+      "balance": "2500",
+      "risk": "0.3",
+      "instrument": "ETH-PERP",
+      "side": "Long",
+      "entry": "3000",
+      "stop": "2999.7"
+    },
+    "expect": {
+      "size": "25.00 ETH",
+      "actualRisk": "7.50",
+      "budget": "7.500000"
+    }
+  },
+  {
+    "id": "C06",
+    "invariant": "INV-01",
+    "file": "C06-fractional-cent-budget-nearest-lot-overs_test.md",
+    "title": "Fractional-cent budget: nearest lot overshoots by $0.0013",
+    "why": "Budget is $100.0037; round-to-nearest gives 33335 lots, $0.0013 over budget.",
+    "inputs": {
+      "balance": "10000.37",
+      "risk": "1",
+      "instrument": "ETH-PERP",
+      "side": "Long",
+      "entry": "3000",
+      "stop": "2999.7"
+    },
+    "expect": {
+      "size": "333.34 ETH",
+      "actualRisk": null,
+      "budget": "100.003700"
+    }
+  },
+  {
+    "id": "C07",
+    "invariant": "INV-01",
+    "file": "C07-display-trap-actual-risk-within-a-half-c_test.md",
+    "title": "Display trap: actual risk within a half cent of the budget",
+    "why": "Budget has a third decimal; an app that truncates the budget but rounds the risk shows risk > budget on screen.",
+    "inputs": {
+      "balance": "10000.75",
+      "risk": "1",
+      "instrument": "ETH-PERP",
+      "side": "Long",
+      "entry": "3000",
+      "stop": "2944.13"
+    },
+    "expect": {
+      "size": "1.79 ETH",
+      "actualRisk": null,
+      "budget": "100.007500"
+    }
+  },
+  {
+    "id": "C08",
+    "invariant": "INV-01",
+    "file": "C08-prd-ac-12-below-the-minimum-lot_test.md",
+    "title": "PRD AC-12: below the minimum lot",
+    "why": "Raw size rounds down to 0.00 ETH; the trade must be refused, not logged as an empty position.",
+    "inputs": {
+      "balance": "100",
+      "risk": "0.1",
+      "instrument": "ETH-PERP",
+      "side": "Long",
+      "entry": "3000",
+      "stop": "2000"
+    },
+    "expect": {
+      "message": "Position too small for minimum lot size",
+      "logTrade": "disabled"
+    }
+  },
+  {
+    "id": "C09",
+    "invariant": "INV-01",
+    "file": "C09-exactly-the-minimum-lot-is-allowed_test.md",
+    "title": "Exactly the minimum lot is allowed",
+    "why": "Raw size is exactly 0.001 BTC; an off-by-one on the minimum refuses a valid trade.",
+    "inputs": {
+      "balance": "10000",
+      "risk": "0.1",
+      "instrument": "BTC-PERP",
+      "side": "Long",
+      "entry": "60000",
+      "stop": "50000"
+    },
+    "expect": {
+      "size": "0.001 BTC",
+      "actualRisk": "10.00",
+      "budget": "10.000000"
+    }
+  },
+  {
+    "id": "C10",
+    "invariant": "INV-01",
+    "file": "C10-log-trade-with-no-position-sized-ac-14_test.md",
+    "title": "Log trade with no position sized (AC-14)",
+    "why": "AC-14 logs a trade only from a valid calculation; an always-enabled button can log an empty trade.",
+    "inputs": {
+      "entry": "",
+      "stop": ""
+    },
+    "expect": {
+      "journalRows": "unchanged"
+    }
+  }
+]

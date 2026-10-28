@@ -1,0 +1,7 @@
+{
+  "url": "http://localhost:5176",
+  "cases": ".redline/cases",
+  "maxCredits": 60,
+  "loopBudget": 5,
+  "target": "gate"
+}
