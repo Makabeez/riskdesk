@@ -25,7 +25,7 @@ export function AccountPanel({ account, errors, riskAmount, onChange }: AccountP
         <h2 id="account-title">Account</h2>
         <span className="panel__meta">Saved in this browser</span>
       </header>
-      <div className="field-row">
+      <div className="field-row field-row--3">
         <NumberField
           id="balance"
           label="Account balance"
@@ -43,6 +43,15 @@ export function AccountPanel({ account, errors, riskAmount, onChange }: AccountP
           error={errors.risk}
           hint={riskAmount ? <>Risk budget {formatMoney(riskAmount)} per trade</> : 'Between 0.1% and 5%'}
           onChange={(risk) => onChange((current) => ({ ...current, risk }))}
+        />
+        <NumberField
+          id="fee"
+          label="Fee per side"
+          suffix="%"
+          value={account.fee}
+          error={errors.fee}
+          hint="Between 0% and 0.1%"
+          onChange={(fee) => onChange((current) => ({ ...current, fee }))}
         />
       </div>
     </section>

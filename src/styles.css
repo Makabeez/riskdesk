@@ -416,8 +416,8 @@ main {
 
 @media (max-width: 400px) {
   .segmented__option span {
-    font-size: 0.875rem;
-    padding: 0 4px;
+    font-size: 0.8125rem;
+    padding: 0 2px;
   }
 }
 

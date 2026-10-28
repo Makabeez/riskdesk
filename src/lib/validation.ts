@@ -11,6 +11,8 @@ const MAX_PRICE = fromInt(10_000_000);
 const MIN_RISK = parseDecimal('0.1')!;
 const MAX_RISK = fromInt(5);
 const MIN_LEVERAGE = fromInt(1);
+const MIN_FEE = fromInt(0);
+const MAX_FEE = parseDecimal('0.1')!;
 
 /** Accepts thousands separators only in valid positions, so "3,5" is never read as 35. */
 const GROUPED_RE = /^[+-]?\d{1,3}(,\d{3})+(\.\d*)?$/;
@@ -41,6 +43,15 @@ export function validateRisk(text: string): FieldResult {
   const value = readNumber(text, { suffix: '%' });
   if (!value || cmp(value, MIN_RISK) < 0 || cmp(value, MAX_RISK) > 0) {
     return fail('Risk must be between 0.1% and 5%');
+  }
+  return ok(value);
+}
+
+/** Fee per side, typed as a percent. Zero is allowed: it is the default. */
+export function validateFee(text: string): FieldResult {
+  const value = readNumber(text, { suffix: '%' });
+  if (!value || cmp(value, MIN_FEE) < 0 || cmp(value, MAX_FEE) > 0) {
+    return fail('Fee must be between 0% and 0.1%');
   }
   return ok(value);
 }

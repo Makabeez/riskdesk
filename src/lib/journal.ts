@@ -1,6 +1,7 @@
-import { abs, add, cmp, div, fromInt, mul, parseDecimal, ratio, sign, sub, toFixed, toPlain, ZERO, type Ratio } from './decimal';
+import { add, cmp, div, fromInt, mul, parseDecimal, ratio, sign, sub, toFixed, toPlain, ZERO, type Ratio } from './decimal';
 import { getInstrument, type Instrument, type InstrumentId } from './instruments';
-import type { Side, Sizing } from './sizing';
+import { costPerUnitOf, feeRateOf, type Side, type Sizing } from './sizing';
+import { validateFee } from './validation';
 
 /**
  * A journal entry. Numbers are stored as exact decimal strings so a reloaded
@@ -14,6 +15,8 @@ export interface Trade {
   entry: string;
   stop: string;
   leverage: string;
+  /** Fee per side in percent, as it was when the trade was logged. Absent on trades logged before fees existed: 0%. */
+  fee?: string;
   status: 'open' | 'closed';
   exit: string | null;
   openedAt: string;
@@ -32,6 +35,7 @@ export function createTrade(
   entry: Ratio,
   stop: Ratio,
   leverage: Ratio,
+  fee: Ratio,
 ): Trade {
   return {
     id: newId(),
@@ -41,6 +45,7 @@ export function createTrade(
     entry: toPlain(entry),
     stop: toPlain(stop),
     leverage: toPlain(leverage),
+    fee: toPlain(fee),
     status: 'open',
     exit: null,
     openedAt: new Date().toISOString(),
@@ -55,17 +60,23 @@ export function closeTrade(trade: Trade, exit: Ratio): Trade {
 /** Parses a stored number; trades are validated on load, so this cannot fail. */
 export const num = (value: string): Ratio => parseDecimal(value) ?? ZERO;
 
+/** The fee rate the trade was logged with, as a fraction of price. */
+const feeRateOfTrade = (trade: Trade): Ratio => (trade.fee === undefined ? ZERO : feeRateOf(num(trade.fee)));
+
+/** Actual risk: size × cost per unit, fees included. */
 export function tradeRisk(trade: Trade): Ratio {
-  return mul(num(trade.size), abs(sub(num(trade.entry), num(trade.stop))));
+  const costPerUnit = costPerUnitOf(num(trade.entry), num(trade.stop), feeRateOfTrade(trade));
+  return mul(num(trade.size), costPerUnit);
 }
 
-/** Realized P&L, or null while the trade is open. */
+/** Realized P&L net of the entry and exit fees, or null while the trade is open. */
 export function tradePnl(trade: Trade): Ratio | null {
   if (trade.status !== 'closed' || trade.exit === null) return null;
   const entry = num(trade.entry);
   const exit = num(trade.exit);
   const move = trade.side === 'long' ? sub(exit, entry) : sub(entry, exit);
-  return mul(move, num(trade.size));
+  const fees = mul(feeRateOfTrade(trade), mul(num(trade.size), add(entry, exit)));
+  return sub(mul(move, num(trade.size)), fees);
 }
 
 /** R multiple = realized P&L ÷ actual risk, or null while the trade is open. */
@@ -125,6 +136,7 @@ export function isTrade(value: unknown): value is Trade {
     isPositive(t.stop) &&
     cmp(num(t.entry), num(t.stop)) !== 0 &&
     isPositive(t.leverage) &&
+    (t.fee === undefined || (typeof t.fee === 'string' && validateFee(t.fee).ok)) &&
     typeof t.openedAt === 'string' &&
     ((t.status === 'open' && t.exit === null && t.closedAt === null) ||
       (t.status === 'closed' && isPositive(t.exit) && typeof t.closedAt === 'string'))

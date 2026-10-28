@@ -4,7 +4,7 @@ import { isTrade, type Trade } from './journal';
 export const ACCOUNT_KEY = 'riskdesk.account.v1';
 export const JOURNAL_KEY = 'riskdesk.journal.v1';
 
-export const DEFAULT_ACCOUNT: AccountInputs = { balance: '10,000.00', risk: '1' };
+export const DEFAULT_ACCOUNT: AccountInputs = { balance: '10,000.00', risk: '1', fee: '0' };
 
 // Storage can be unavailable (private mode, blocked site data) or full; the
 // app keeps working in memory either way.
@@ -30,6 +30,8 @@ export function loadAccount(): AccountInputs {
   return {
     balance: typeof stored?.balance === 'string' ? stored.balance : DEFAULT_ACCOUNT.balance,
     risk: typeof stored?.risk === 'string' ? stored.risk : DEFAULT_ACCOUNT.risk,
+    // Settings saved before fees existed have no fee: they keep the 0% default.
+    fee: typeof stored?.fee === 'string' ? stored.fee : DEFAULT_ACCOUNT.fee,
   };
 }
 

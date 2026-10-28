@@ -1,5 +1,5 @@
 import type { AccountInputs, Evaluation } from '../lib/calculator';
-import { cmp } from '../lib/decimal';
+import { cmp, sign } from '../lib/decimal';
 import { formatMoney, formatPlain, formatPrice, formatSize } from '../lib/format';
 import type { Side } from '../lib/sizing';
 import { validateBalance } from '../lib/validation';
@@ -77,7 +77,9 @@ export function ResultPanel({ evaluation, account, side, notice, onLog }: Result
             <p className="result__note">
               Rounded down to the {formatSize(instrument.lotStep, instrument.sizeDecimals)} {instrument.base} lot step, so
               risk stays within your {formatMoney(result.sizing.riskAmount)} budget. Risk per unit $
-              {formatPrice(result.sizing.riskPerUnit)}, leverage {formatPlain(result.leverage)}x.
+              {formatPrice(result.sizing.riskPerUnit)}
+              {sign(result.fee) > 0 && <> · cost per unit ${formatPrice(result.sizing.costPerUnit)} with fees</>}, leverage{' '}
+              {formatPlain(result.leverage)}x.
             </p>
             <MarginWarning account={account} evaluation={evaluation} />
           </>
