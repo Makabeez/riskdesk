@@ -1,5 +1,5 @@
 {
-  "commit_id": "fae91b35-969e-4a4f-8b45-e840869e7db7",
+  "commit_id": "ae907d00-c598-4d5a-a1ff-5c987d8cd859",
   "test_id": "dcb2d05d-8aaf-405b-8aeb-ebcf393ede6a",
   "testcase_id": "01M5ZJPAYKZYAG11JV5Y101812",
   "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
@@ -8,11 +8,11 @@
   "session_name": "C04-float-trap-on-sol-exact-lot-count-floats",
   "executions": [
     {
-      "execution_id": "1352dd0e-d0bc-448e-9453-6a21f619461b",
+      "execution_id": "c94b3bd8-356a-488d-9fb7-8de7304cfa0d",
       "run_kind": "author",
-      "status": "failed",
+      "status": "passed",
       "valid": true,
-      "at": "2026-10-28T22:30:22.408Z"
+      "at": "2026-10-29T21:23:23.725Z"
     }
   ]
 }

@@ -5,7 +5,7 @@ import type { AccountSettings } from './validate';
 const ACCOUNT_KEY = 'riskdesk.account';
 const TRADES_KEY = 'riskdesk.trades';
 
-export const DEFAULT_ACCOUNT: AccountSettings = { balance: '10000', riskPct: '1' };
+export const DEFAULT_ACCOUNT: AccountSettings = { balance: '10000', riskPct: '1', feePct: '0' };
 
 function read(key: string): unknown {
   try {
@@ -38,7 +38,8 @@ function isTrade(value: unknown): value is Trade {
     isFiniteNumber(t.size) &&
     isFiniteNumber(t.entry) &&
     isFiniteNumber(t.stop) &&
-    isFiniteNumber(t.actualRisk);
+    isFiniteNumber(t.actualRisk) &&
+    (t.feePct === undefined || isFiniteNumber(t.feePct));
   if (!base) return false;
   if (t.status === 'open') return true;
   return t.status === 'closed' && isFiniteNumber(t.exit) && isFiniteNumber(t.pnl) && isFiniteNumber(t.r);
@@ -47,7 +48,9 @@ function isTrade(value: unknown): value is Trade {
 export function loadAccount(): AccountSettings {
   const value = read(ACCOUNT_KEY) as Partial<AccountSettings> | null;
   if (value && typeof value.balance === 'string' && typeof value.riskPct === 'string') {
-    return { balance: value.balance, riskPct: value.riskPct };
+    // Accounts saved before fees existed have no feePct; they get the default 0%.
+    const feePct = typeof value.feePct === 'string' ? value.feePct : DEFAULT_ACCOUNT.feePct;
+    return { balance: value.balance, riskPct: value.riskPct, feePct };
   }
   return DEFAULT_ACCOUNT;
 }

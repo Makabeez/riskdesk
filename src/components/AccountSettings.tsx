@@ -1,4 +1,6 @@
-import { balanceError, riskError, type AccountSettings as Account } from '../lib/validate';
+import { formatMoney } from '../lib/format';
+import { parsePositive } from '../lib/parse';
+import { balanceError, feeError, riskError, type AccountSettings as Account } from '../lib/validate';
 
 interface AccountSettingsProps {
   account: Account;
@@ -8,6 +10,10 @@ interface AccountSettingsProps {
 export function AccountSettings({ account, onChange }: AccountSettingsProps) {
   const balanceMessage = balanceError(account.balance);
   const riskMessage = riskError(account.riskPct);
+  const feeMessage = feeError(account.feePct);
+  const balance = parsePositive(account.balance);
+  const riskPct = parsePositive(account.riskPct);
+  const riskBudget = balance !== null && riskPct !== null && riskMessage === null ? formatMoney((balance * riskPct) / 100) : null;
 
   return (
     <section className="panel" aria-labelledby="account-title">
@@ -46,6 +52,25 @@ export function AccountSettings({ account, onChange }: AccountSettingsProps) {
           {riskMessage && (
             <p id="risk-error" className="field-error" role="alert">
               {riskMessage}
+            </p>
+          )}
+          {riskBudget && <p className="hint">{`Risk budget: ${riskBudget} per trade`}</p>}
+        </div>
+        <div className="field">
+          <label htmlFor="fee">Fee per side (%)</label>
+          <input
+            id="fee"
+            type="text"
+            inputMode="decimal"
+            autoComplete="off"
+            value={account.feePct}
+            aria-invalid={feeMessage !== null}
+            aria-describedby={feeMessage ? 'fee-error' : undefined}
+            onChange={(event) => onChange({ ...account, feePct: event.target.value })}
+          />
+          {feeMessage && (
+            <p id="fee-error" className="field-error" role="alert">
+              {feeMessage}
             </p>
           )}
         </div>

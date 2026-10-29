@@ -26,8 +26,10 @@ export function formatR(value: number): string {
   return `${sign}${magnitude.toFixed(2)}R`;
 }
 
+// "5,000" for whole-number sizes, "1,234.56" with thousands separators.
 export function formatSize(size: number, decimals: number): string {
-  return size.toFixed(decimals);
+  const [whole, fraction] = size.toFixed(decimals).split('.');
+  return fraction === undefined ? groupThousands(whole) : `${groupThousands(whole)}.${fraction}`;
 }
 
 export function formatPercent(ratio: number): string {

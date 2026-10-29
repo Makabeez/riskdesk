@@ -9,6 +9,8 @@ interface TradeBase {
   entry: number;
   stop: number;
   actualRisk: number;
+  // Fee per side in percent, fixed when the trade was logged (AC-28). Missing on rows logged before fees existed: treated as 0.
+  feePct?: number;
 }
 
 export interface OpenTrade extends TradeBase {
@@ -28,8 +30,10 @@ export function isClosed(trade: Trade): trade is ClosedTrade {
   return trade.status === 'closed';
 }
 
+// Net of fees on entry and exit (AC-27).
 export function closeTrade(trade: OpenTrade, exit: number): ClosedTrade {
-  const pnl = realizedPnl(trade.side, trade.entry, exit, trade.size);
+  const fees = ((trade.feePct ?? 0) / 100) * trade.size * (trade.entry + exit);
+  const pnl = realizedPnl(trade.side, trade.entry, exit, trade.size) - fees;
   return { ...trade, status: 'closed', exit, pnl, r: pnl / trade.actualRisk };
 }
 

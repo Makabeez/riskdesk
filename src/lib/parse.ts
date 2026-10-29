@@ -5,9 +5,15 @@ const PLAIN_DECIMAL = /^(\d+\.?\d*|\.\d+)$/;
 export const INPUT_CEILING = 1e9;
 
 export function parsePositive(text: string): number | null {
+  const value = parseNonNegative(text);
+  return value === null || value <= 0 ? null : value;
+}
+
+// Zero is allowed (a fee of 0%); negatives and non-numbers are not.
+export function parseNonNegative(text: string): number | null {
   const trimmed = text.trim();
   if (!PLAIN_DECIMAL.test(trimmed)) return null;
   const value = Number(trimmed);
-  if (!Number.isFinite(value) || value <= 0 || value >= INPUT_CEILING) return null;
+  if (!Number.isFinite(value) || value < 0 || value >= INPUT_CEILING) return null;
   return value;
 }

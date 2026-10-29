@@ -61,7 +61,7 @@ export function Calculator({ account, onLog }: CalculatorProps) {
   const canLog = sizing !== null && !sizing.tooSmall;
 
   function handleLog() {
-    if (!sizing || !canLog || entry === null || stop === null) return;
+    if (!sizing || !account || !canLog || entry === null || stop === null) return;
     onLog({
       id: newTradeId(),
       instrument: instrument.id,
@@ -70,6 +70,7 @@ export function Calculator({ account, onLog }: CalculatorProps) {
       entry,
       stop,
       actualRisk: sizing.actualRisk,
+      feePct: account.feePct,
       status: 'open',
     });
   }
