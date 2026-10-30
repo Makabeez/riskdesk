@@ -1,0 +1,26 @@
+[
+  {
+    "id": "P01",
+    "invariant": "INV-04",
+    "ac": "AC-16",
+    "file": "P01-short-closed-below-entry-is-a-winner_test.md",
+    "title": "Short closed below entry is a winner",
+    "why": "Using (exit - entry) for every side turns a winning short into a loss."
+  },
+  {
+    "id": "P02",
+    "invariant": "INV-04",
+    "ac": "AC-15",
+    "file": "P02-long-closed-below-entry-is-a-loser_test.md",
+    "title": "Long closed below entry is a loser",
+    "why": "The long-side mirror: P&L and R must both be negative."
+  },
+  {
+    "id": "P03",
+    "invariant": "INV-04",
+    "ac": "AC-19",
+    "file": "P03-summary-of-one-winner-and-one-loser_test.md",
+    "title": "Summary of one winner and one loser",
+    "why": "Averages over the wrong set (open trades, or R vs $) give the wrong win rate or average R."
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "N01",
+    "invariant": "INV-05",
+    "ac": "AC-02",
+    "file": "N01-risk-above-5-is-refused_test.md",
+    "title": "Risk above 5% is refused",
+    "why": "An unchecked risk field sizes a 5.1% trade."
+  },
+  {
+    "id": "N02",
+    "invariant": "INV-05",
+    "ac": "AC-03",
+    "file": "N02-zero-balance-is-refused_test.md",
+    "title": "Zero balance is refused",
+    "why": "A zero balance gives a zero budget and a 0.00 size that looks valid."
+  },
+  {
+    "id": "N03",
+    "invariant": "INV-05",
+    "ac": "AC-21, AC-22",
+    "file": "N03-1e9-and-letters-in-price-fields_test.md",
+    "title": "1e9 and letters in price fields",
+    "why": "parseFloat(\"1e9\") is a valid number and parseFloat(\"abc\") is NaN; both must be inline errors."
+  }
+]

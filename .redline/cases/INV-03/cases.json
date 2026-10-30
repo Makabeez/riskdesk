@@ -1,0 +1,34 @@
+[
+  {
+    "id": "S01",
+    "invariant": "INV-03",
+    "ac": "AC-08",
+    "file": "S01-long-with-the-stop-above-entry-is-refuse_test.md",
+    "title": "Long with the stop above entry is refused",
+    "why": "Sizing with |entry - stop| happily sizes a long whose stop is above entry."
+  },
+  {
+    "id": "S02",
+    "invariant": "INV-03",
+    "ac": "AC-10",
+    "file": "S02-short-with-the-stop-below-entry-is-refus_test.md",
+    "title": "Short with the stop below entry is refused",
+    "why": "The mirror case of S01 for shorts."
+  },
+  {
+    "id": "S03",
+    "invariant": "INV-03",
+    "ac": "AC-08",
+    "file": "S03-stop-equal-to-entry-is-refused_test.md",
+    "title": "Stop equal to entry is refused",
+    "why": "Risk per unit is zero; a naive division shows Infinity or a huge size."
+  },
+  {
+    "id": "S04",
+    "invariant": "INV-03",
+    "ac": "AC-08, AC-10",
+    "file": "S04-flipping-side-after-a-result-re-validate_test.md",
+    "title": "Flipping side after a result re-validates the stop",
+    "why": "A valid long becomes an invalid short when only the side changes; a stale result stays on screen."
+  }
+]

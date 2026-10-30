@@ -42,7 +42,7 @@ function sizedCase(id, title, why, c) {
 ${fill(c)}
 
 ## Check the size and the risk
-Verify that the Result panel shows a position size of exactly ${x.sizeStr} ${x.unit}, that ${riskLine}, and that the actual risk shown is not greater than the risk budget the page shows under the "Risk per trade" field (balance ${c.balance} multiplied by ${c.risk}% is ${money(x.budget.toFixedHalfUp(2))} rounded to the cent). Store the displayed position size as displayed_size and the displayed actual risk as displayed_risk.
+Verify that the Result panel shows a position size of exactly ${x.sizeStr} ${x.unit} and that ${riskLine}. The risk budget here is ${c.balance} multiplied by ${c.risk}%, which is ${money(x.budget.toFixedHalfUp(2))} to the cent: the actual risk shown must not be greater than that. Store the displayed position size as displayed_size and the displayed actual risk as displayed_risk.
 `,
   };
 }

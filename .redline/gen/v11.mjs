@@ -40,7 +40,7 @@ function sized(id, ac, title, why, c) {
 ${fill(c)}
 
 ## Check the size and the risk
-Verify that the Result panel shows a position size of ${sizeWords(x)}, that the actual risk shown is exactly ${risk}, and that the actual risk shown is not greater than the risk budget the page shows under the "Risk per trade" field. Store the displayed position size as displayed_size and the displayed actual risk as displayed_risk.
+Verify that the Result panel shows a position size of ${sizeWords(x)}, that the actual risk shown is exactly ${risk}, which is within the ${money(x.budget.toFixedHalfUp(2))} risk budget (balance ${c.balance} multiplied by ${c.risk}%). Store the displayed position size as displayed_size and the displayed actual risk as displayed_risk.
 
 ${c.fee !== '0' ? RESET : ''}` };
 }

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "R01",
+    "invariant": "INV-06",
+    "ac": "AC-04",
+    "file": "R01-account-settings-survive-a-reload_test.md",
+    "title": "Account settings survive a reload",
+    "why": "Settings kept only in component state are lost on reload."
+  },
+  {
+    "id": "R02",
+    "invariant": "INV-06",
+    "ac": "AC-17, AC-18",
+    "file": "R02-logged-trade-survives-reload-deleted-tra_test.md",
+    "title": "Logged trade survives reload; deleted trade stays deleted",
+    "why": "Journal writes that skip storage, or deletes that only touch state, come back after a reload."
+  }
+]

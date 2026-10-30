@@ -1,0 +1,26 @@
+[
+  {
+    "id": "L01",
+    "invariant": "INV-02",
+    "ac": "AC-11",
+    "file": "L01-leverage-one-above-the-btc-cap-is-refuse_test.md",
+    "title": "Leverage one above the BTC cap is refused",
+    "why": "An unchecked field accepts 51x on a 50x instrument; a clamping field silently changes it to 50."
+  },
+  {
+    "id": "L02",
+    "invariant": "INV-02",
+    "ac": "AC-11",
+    "file": "L02-switching-to-a-lower-cap-instrument-re-c_test.md",
+    "title": "Switching to a lower-cap instrument re-checks leverage",
+    "why": "30x is valid on BTC-PERP (50x) but not on SOL-PERP (20x); an app that only validates on typing keeps the stale result."
+  },
+  {
+    "id": "L03",
+    "invariant": "INV-02",
+    "ac": "AC-11",
+    "file": "L03-leverage-exactly-at-the-cap-is-allowed_test.md",
+    "title": "Leverage exactly at the cap is allowed",
+    "why": "An off-by-one on the cap (> vs >=) refuses 50x on a 50x instrument."
+  }
+]
