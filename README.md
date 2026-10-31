@@ -2,7 +2,7 @@
 
 > A position-size calculator and trade journal whose whole job is to never show a risk above your limit. Three Claude models built it from one PRD; Redline and Kane CLI attacked every build in a real browser. This repo holds the app, the PRD, every adversarial case, every ledger line, and every agent's full commit history.
 
-**Live app:** {{LIVE_URL}} · **Video:** {{VIDEO_URL}} · **Kit:** [Makabeez/kane-redline](https://github.com/Makabeez/kane-redline)
+**Live app:** https://riskdesk-omega.vercel.app · **Video:** {{VIDEO_URL}} · **Kit:** [Makabeez/kane-redline](https://github.com/Makabeez/kane-redline)
 
 ## Judge path (one command, after `kane-cli login`)
 

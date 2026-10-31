@@ -7,3 +7,4 @@ e2e/*.png
 .testmuai/
 # Redline gate state is per machine
 .redline/state.json
+.vercel
