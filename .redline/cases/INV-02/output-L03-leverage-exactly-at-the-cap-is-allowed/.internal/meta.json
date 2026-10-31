@@ -1,0 +1,18 @@
+{
+  "test_id": "e0cb9283-47ef-4958-96a4-b4b18b156780",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "L03-leverage-exactly-at-the-cap-is-allowed",
+  "commit_id": "89e718b2-7a8c-4ad2-8228-edbbe4258632",
+  "testcase_id": "01M67SHGSKZZWGGC5TA30CW422",
+  "executions": [
+    {
+      "execution_id": "c6692f2d-8d60-4fc6-a7f8-c373c59f0d94",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:36:17.801Z"
+    }
+  ]
+}

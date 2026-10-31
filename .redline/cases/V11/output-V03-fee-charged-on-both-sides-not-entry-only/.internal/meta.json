@@ -1,0 +1,18 @@
+{
+  "commit_id": "8611ca65-17a6-47d9-a384-0ecab080c540",
+  "test_id": "00680fe7-c98c-47cf-960e-f79ca78853fe",
+  "testcase_id": "01M5ZPHXKH9AHEGB9FGJ82G2E3",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "V03-fee-charged-on-both-sides-not-entry-only",
+  "executions": [
+    {
+      "execution_id": "1bb46c03-f0e6-4661-91d5-4c234e57dc33",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T02:04:25.949Z"
+    }
+  ]
+}

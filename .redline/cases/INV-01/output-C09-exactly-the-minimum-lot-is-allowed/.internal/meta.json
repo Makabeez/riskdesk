@@ -1,0 +1,18 @@
+{
+  "commit_id": "beaaa7ba-4b7c-43b0-b5ae-1d4dc2cd9634",
+  "test_id": "acfc1096-b300-46d4-9603-cf33edfbac0c",
+  "testcase_id": "01M5ZKND9282TAHD12P5XCCVHM",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "C09-exactly-the-minimum-lot-is-allowed",
+  "executions": [
+    {
+      "execution_id": "edef9c35-5479-446d-9eb5-ab4421da2664",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:30:37.353Z"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "commit_id": "877a683d-7853-4ed6-ace0-a0c66149b6cc",
+  "test_id": "6e6a85de-b37b-447e-a442-ef8827b6e6b6",
+  "testcase_id": "01M5ZPZ6SM8Y57MRSKV6W70Q5Z",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "V07-xrp-below-the-minimum-of-10-not-the-lot-",
+  "executions": [
+    {
+      "execution_id": "39933478-4bdd-49ef-8702-922e4079f65a",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T02:10:46.722Z"
+    }
+  ]
+}

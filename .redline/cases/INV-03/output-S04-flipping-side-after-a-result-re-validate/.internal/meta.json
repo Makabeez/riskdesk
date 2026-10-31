@@ -1,0 +1,18 @@
+{
+  "test_id": "a8019f65-d63f-412d-9a95-0c2061e0e29b",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "S04-flipping-side-after-a-result-re-validate",
+  "commit_id": "a9b3ac87-4331-42cf-93e1-d802b8a23db0",
+  "testcase_id": "01M67SVBCXBAZBXD1RPCQBKK6P",
+  "executions": [
+    {
+      "execution_id": "81ccb2ef-999f-4d9c-bc73-93de78d760ad",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:41:49.915Z"
+    }
+  ]
+}

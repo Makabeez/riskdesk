@@ -1,0 +1,18 @@
+{
+  "commit_id": "60088342-911b-4b50-a2dc-8d63716e33ce",
+  "test_id": "d211570a-7ace-4c06-a428-6de424575928",
+  "testcase_id": "01M5ZPNDNSD4C6HQCQP7FEZT17",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "V04-fees-on-a-short",
+  "executions": [
+    {
+      "execution_id": "e3134ead-661b-4948-b5f3-1babf7667596",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T02:06:14.681Z"
+    }
+  ]
+}

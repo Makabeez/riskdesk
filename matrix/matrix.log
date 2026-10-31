@@ -1,0 +1,420 @@
+matrix start 2026-10-30T23:32:02+01:00 · Available credits: 10023.0751
+== opus-oneshot (/home/vps/riskdesk-baseline @ e797700) on :5181 · suites: INV-01 INV-02 INV-03 INV-04 INV-05 INV-06
+redline · kane-cli 0.10.0 · 10 case(s) · target opus-oneshot http://localhost:5181 · cap 900 credits
+ledger → /home/vps/redline-matrix/opus-oneshot/ledger.ndjson
+  C01 #1: held  rc=100 success.complete  credits=38.65  99.5s
+  C02 #1: held  rc=100 success.complete  credits=38.89  98.6s
+  C03 #1: held  rc=100 success.complete  credits=36.79  94.7s
+  C04 #1: held  rc=100 success.complete  credits=39.07  83.7s
+  C05 #1: held  rc=100 success.complete  credits=36.13  84.5s
+  C06 #1: held  rc=100 success.complete  credits=38.81  91.4s
+  C07 #1: held  rc=100 success.complete  credits=37.06  91.2s
+  C08 #1: held  rc=100 success.complete  credits=36.30  94.2s
+  C09 #1: held  rc=100 success.complete  credits=37.79  93.7s
+  C10 #1: held  rc=100 success.complete  credits=63.94  105.9s
+
+result
+  C01   held
+  C02   held
+  C03   held
+  C04   held
+  C05   held
+  C06   held
+  C07   held
+  C08   held
+  C09   held
+  C10   held
+credits spent this run: 403.42
+redline · kane-cli 0.10.0 · 3 case(s) · target opus-oneshot http://localhost:5181 · cap 900 credits
+ledger → /home/vps/redline-matrix/opus-oneshot/ledger.ndjson
+  L01 #1: held  rc=100 success.complete  credits=36.17  79s
+  L02 #1: held  rc=100 success.complete  credits=56.09  115.1s
+  L03 #1: held  rc=100 success.complete  credits=37.55  86.8s
+
+result
+  L01   held
+  L02   held
+  L03   held
+credits spent this run: 129.82
+redline · kane-cli 0.10.0 · 4 case(s) · target opus-oneshot http://localhost:5181 · cap 900 credits
+ledger → /home/vps/redline-matrix/opus-oneshot/ledger.ndjson
+  S01 #1: held  rc=100 success.complete  credits=37.95  84s
+  S02 #1: held  rc=100 success.complete  credits=35.76  80.7s
+  S03 #1: held  rc=100 success.complete  credits=34.41  84.1s
+  S04 #1: held  rc=100 success.complete  credits=51.13  99.3s
+
+result
+  S01   held
+  S02   held
+  S03   held
+  S04   held
+credits spent this run: 159.26
+redline · kane-cli 0.10.0 · 3 case(s) · target opus-oneshot http://localhost:5181 · cap 900 credits
+ledger → /home/vps/redline-matrix/opus-oneshot/ledger.ndjson
+  P01 #1: held  rc=100 success.complete  credits=69.26  135.6s
+  P02 #1: held  rc=100 success.complete  credits=58.98  129.5s
+  P03 #1: held  rc=100 success.complete  credits=141.71  276.1s
+
+result
+  P01   held
+  P02   held
+  P03   held
+credits spent this run: 269.95
+redline · kane-cli 0.10.0 · 3 case(s) · target opus-oneshot http://localhost:5181 · cap 900 credits
+ledger → /home/vps/redline-matrix/opus-oneshot/ledger.ndjson
+  N01 #1: held  rc=100 success.complete  credits=36.10  81.9s
+  N02 #1: held  rc=100 success.complete  credits=49.91  109.9s
+  N03 #1: held  rc=100 success.complete  credits=70.29  146.4s
+
+result
+  N01   held
+  N02   held
+  N03   held
+credits spent this run: 156.30
+redline · kane-cli 0.10.0 · 2 case(s) · target opus-oneshot http://localhost:5181 · cap 900 credits
+ledger → /home/vps/redline-matrix/opus-oneshot/ledger.ndjson
+  R01 #1: held  rc=100 success.complete  credits=51.71  79.3s
+  R02 #1: held  rc=100 success.complete  credits=73.96  180.5s
+
+result
+  R01   held
+  R02   held
+credits spent this run: 125.67
+== sonnet-oneshot (/home/vps/riskdesk-sonnet-oneshot @ cdcc9b1) on :5183 · suites: INV-01 INV-02 INV-03 INV-04 INV-05 INV-06
+redline · kane-cli 0.10.0 · 10 case(s) · target sonnet-oneshot http://localhost:5183 · cap 900 credits
+ledger → /home/vps/redline-matrix/sonnet-oneshot/ledger.ndjson
+  C01 #1: held  rc=100 success.complete  credits=46.78  137.6s
+  C02 #1: held  rc=100 success.complete  credits=39.46  106.8s
+  C03 #1: held  rc=100 success.complete  credits=36.46  76.2s
+  C04 #1: exploit_candidate  rc=740 assertion_error.confirmed_product_bug  credits=44.94  112.2s
+  C04 #2: exploit_candidate  rc=740 assertion_error.confirmed_product_bug  credits=18.27  54.3s
+  C05 #1: exploit_candidate  rc=740 assertion_error.confirmed_product_bug  credits=39.10  90.5s
+  C05 #2: exploit_candidate  rc=740 assertion_error.confirmed_product_bug  credits=14.90  52.6s
+  C06 #1: held  rc=100 success.complete  credits=36.63  84.8s
+  C07 #1: held  rc=100 success.complete  credits=37.46  83.9s
+  C08 #1: held  rc=100 success.complete  credits=37.41  80.5s
+  C09 #1: held  rc=100 success.complete  credits=38.32  99.2s
+  C10 #1: held  rc=100 success.complete  credits=70.77  111.3s
+
+result
+  C01   held
+  C02   held
+  C03   held
+  C04   exploit_confirmed
+  C05   exploit_confirmed
+  C06   held
+  C07   held
+  C08   held
+  C09   held
+  C10   held
+credits spent this run: 460.50
+redline · kane-cli 0.10.0 · 3 case(s) · target sonnet-oneshot http://localhost:5183 · cap 900 credits
+ledger → /home/vps/redline-matrix/sonnet-oneshot/ledger.ndjson
+  L01 #1: held  rc=100 success.complete  credits=33.21  65.7s
+  L02 #1: held  rc=100 success.complete  credits=58.02  128.5s
+  L03 #1: held  rc=100 success.complete  credits=32.35  66.3s
+
+result
+  L01   held
+  L02   held
+  L03   held
+credits spent this run: 123.58
+redline · kane-cli 0.10.0 · 4 case(s) · target sonnet-oneshot http://localhost:5183 · cap 900 credits
+ledger → /home/vps/redline-matrix/sonnet-oneshot/ledger.ndjson
+  S01 #1: held  rc=100 success.complete  credits=34.72  78.3s
+  S02 #1: held  rc=100 success.complete  credits=34.58  75.9s
+  S03 #1: held  rc=100 success.complete  credits=35.23  77.4s
+  S04 #1: held  rc=100 success.complete  credits=49.99  92.5s
+
+result
+  S01   held
+  S02   held
+  S03   held
+  S04   held
+credits spent this run: 154.51
+redline · kane-cli 0.10.0 · 3 case(s) · target sonnet-oneshot http://localhost:5183 · cap 900 credits
+ledger → /home/vps/redline-matrix/sonnet-oneshot/ledger.ndjson
+  P01 #1: exploit_candidate  rc=740 assertion_error.confirmed_product_bug  credits=87.31  179s
+  P01 #2: exploit_candidate  rc=740 assertion_error.confirmed_product_bug  credits=27.14  92.6s
+  P02 #1: exploit_candidate  rc=740 assertion_error.confirmed_product_bug  credits=76.77  185.2s
+  P02 #2: exploit_candidate  rc=740 assertion_error.confirmed_product_bug  credits=25.40  99.9s
+  P03 #1: exploit_candidate  rc=740 assertion_error.confirmed_product_bug  credits=156.59  325.8s
+  P03 #2: exploit_candidate  rc=740 assertion_error.confirmed_product_bug  credits=30.29  152.6s
+
+result
+  P01   exploit_confirmed
+  P02   exploit_confirmed
+  P03   exploit_confirmed
+credits spent this run: 403.50
+redline · kane-cli 0.10.0 · 3 case(s) · target sonnet-oneshot http://localhost:5183 · cap 900 credits
+ledger → /home/vps/redline-matrix/sonnet-oneshot/ledger.ndjson
+  N01 #1: held  rc=100 success.complete  credits=36.58  85.1s
+  N02 #1: held  rc=100 success.complete  credits=47.71  99.3s
+  N03 #1: inconclusive  rc=720 assertion_error.checkpoint_failed  credits=38.94  81.9s
+  N03 #2: inconclusive  rc=330 stuck.ap_stuck  credits=41.41  85.3s
+
+result
+  N01   held
+  N02   held
+  N03   inconclusive
+credits spent this run: 164.64
+redline · kane-cli 0.10.0 · 2 case(s) · target sonnet-oneshot http://localhost:5183 · cap 900 credits
+ledger → /home/vps/redline-matrix/sonnet-oneshot/ledger.ndjson
+  R01 #1: held  rc=100 success.complete  credits=52.46  84.5s
+  R02 #1: exploit_candidate  rc=740 assertion_error.confirmed_product_bug  credits=78.65  192.5s
+  R02 #2: inconclusive  rc=330 stuck.ap_stuck  credits=25.70  104.5s
+
+result
+  R01   held
+  R02   unreproduced_inconclusive
+credits spent this run: 156.81
+== haiku-oneshot (/home/vps/riskdesk-haiku-oneshot @ 9ab6278) on :5182 · suites: INV-01 INV-02 INV-03 INV-04 INV-05 INV-06
+redline · kane-cli 0.10.0 · 10 case(s) · target haiku-oneshot http://localhost:5182 · cap 900 credits
+ledger → /home/vps/redline-matrix/haiku-oneshot/ledger.ndjson
+  C01 #1: held  rc=100 success.complete  credits=36.73  81.4s
+  C02 #1: held  rc=100 success.complete  credits=38.37  85.3s
+  C03 #1: held  rc=100 success.complete  credits=40.61  94.6s
+  C04 #1: exploit_candidate  rc=740 assertion_error.confirmed_product_bug  credits=47.13  119.3s
+  C04 #2: exploit_candidate  rc=740 assertion_error.confirmed_product_bug  credits=18.41  54.5s
+  C05 #1: exploit_candidate  rc=740 assertion_error.confirmed_product_bug  credits=40.20  88.4s
+  C05 #2: exploit_candidate  rc=740 assertion_error.confirmed_product_bug  credits=15.33  46.2s
+  C06 #1: held  rc=100 success.complete  credits=40.94  152s
+  C07 #1: held  rc=100 success.complete  credits=36.83  78.3s
+  C08 #1: held  rc=100 success.complete  credits=43.33  107.7s
+  C09 #1: held  rc=100 success.complete  credits=40.30  94.4s
+  C10 #1: held  rc=100 success.complete  credits=64.41  98.4s
+
+result
+  C01   held
+  C02   held
+  C03   held
+  C04   exploit_confirmed
+  C05   exploit_confirmed
+  C06   held
+  C07   held
+  C08   held
+  C09   held
+  C10   held
+credits spent this run: 462.59
+redline · kane-cli 0.10.0 · 3 case(s) · target haiku-oneshot http://localhost:5182 · cap 900 credits
+ledger → /home/vps/redline-matrix/haiku-oneshot/ledger.ndjson
+  L01 #1: held  rc=100 success.complete  credits=37.65  88.7s
+  L02 #1: held  rc=100 success.complete  credits=53.03  103.3s
+  L03 #1: held  rc=100 success.complete  credits=34.30  88.7s
+
+result
+  L01   held
+  L02   held
+  L03   held
+credits spent this run: 124.98
+redline · kane-cli 0.10.0 · 4 case(s) · target haiku-oneshot http://localhost:5182 · cap 900 credits
+ledger → /home/vps/redline-matrix/haiku-oneshot/ledger.ndjson
+  S01 #1: held  rc=100 success.complete  credits=34.09  71.1s
+  S02 #1: held  rc=100 success.complete  credits=33.88  76.5s
+  S03 #1: held  rc=100 success.complete  credits=35.13  76.7s
+  S04 #1: held  rc=100 success.complete  credits=50.48  94.8s
+
+result
+  S01   held
+  S02   held
+  S03   held
+  S04   held
+credits spent this run: 153.57
+redline · kane-cli 0.10.0 · 3 case(s) · target haiku-oneshot http://localhost:5182 · cap 900 credits
+ledger → /home/vps/redline-matrix/haiku-oneshot/ledger.ndjson
+  P01 #1: held  rc=100 success.complete  credits=67.80  120.2s
+  P02 #1: held  rc=100 success.complete  credits=60.33  126.2s
+  P03 #1: held  rc=100 success.complete  credits=136.71  235.8s
+
+result
+  P01   held
+  P02   held
+  P03   held
+credits spent this run: 264.84
+redline · kane-cli 0.10.0 · 3 case(s) · target haiku-oneshot http://localhost:5182 · cap 900 credits
+ledger → /home/vps/redline-matrix/haiku-oneshot/ledger.ndjson
+  N01 #1: held  rc=100 success.complete  credits=36.25  84.2s
+  N02 #1: held  rc=100 success.complete  credits=54.15  108.3s
+  N03 #1: held  rc=100 success.complete  credits=63.04  103.8s
+
+result
+  N01   held
+  N02   held
+  N03   held
+credits spent this run: 153.44
+redline · kane-cli 0.10.0 · 2 case(s) · target haiku-oneshot http://localhost:5182 · cap 900 credits
+ledger → /home/vps/redline-matrix/haiku-oneshot/ledger.ndjson
+  R01 #1: held  rc=100 success.complete  credits=51.17  79s
+  R02 #1: held  rc=100 success.complete  credits=69.34  146s
+
+result
+  R01   held
+  R02   held
+credits spent this run: 120.52
+== haiku-gated-v11 (/home/vps/riskdesk-haiku-gated @ b257436) on :5185 · suites: V11
+redline · kane-cli 0.10.0 · 9 case(s) · target haiku-gated-v11 http://localhost:5185 · cap 900 credits
+ledger → /home/vps/redline-matrix/haiku-gated-v11/ledger.ndjson
+  V01 #1: held  rc=100 success.complete  credits=49.92  109s
+  V02 #1: held  rc=100 success.complete  credits=53.65  129s
+  V03 #1: held  rc=100 success.complete  credits=50.21  104.1s
+  V04 #1: held  rc=100 success.complete  credits=52.04  112.5s
+  V05 #1: held  rc=100 success.complete  credits=53.67  126.7s
+  V06 #1: held  rc=100 success.complete  credits=36.12  83.3s
+  V07 #1: held  rc=100 success.complete  credits=41.71  108.5s
+  V08 #1: held  rc=100 success.complete  credits=38.52  106.3s
+  V09 #1: held  rc=100 success.complete  credits=77.61  149.4s
+
+result
+  V01   held
+  V02   held
+  V03   held
+  V04   held
+  V05   held
+  V06   held
+  V07   held
+  V08   held
+  V09   held
+credits spent this run: 453.45
+== opus-v11 (/home/vps/riskdesk-v11-plain @ 5f230bb) on :5184 · suites: INV-01 INV-02 INV-03 INV-04 INV-05 INV-06 V11
+redline · kane-cli 0.10.0 · 10 case(s) · target opus-v11 http://localhost:5184 · cap 900 credits
+ledger → /home/vps/redline-matrix/opus-v11/ledger.ndjson
+  C01 #1: held  rc=100 success.complete  credits=36.97  81.1s
+  C02 #1: held  rc=100 success.complete  credits=38.69  83.5s
+  C03 #1: held  rc=100 success.complete  credits=36.09  81.1s
+  C04 #1: held  rc=100 success.complete  credits=37.62  83.9s
+  C05 #1: held  rc=100 success.complete  credits=37.29  81.1s
+  C06 #1: held  rc=100 success.complete  credits=37.75  83.2s
+  C07 #1: held  rc=100 success.complete  credits=36.24  76.9s
+  C08 #1: held  rc=100 success.complete  credits=35.28  75.6s
+  C09 #1: held  rc=100 success.complete  credits=39.02  88.4s
+  C10 #1: held  rc=100 success.complete  credits=49.91  86s
+
+result
+  C01   held
+  C02   held
+  C03   held
+  C04   held
+  C05   held
+  C06   held
+  C07   held
+  C08   held
+  C09   held
+  C10   held
+credits spent this run: 384.86
+redline · kane-cli 0.10.0 · 3 case(s) · target opus-v11 http://localhost:5184 · cap 900 credits
+ledger → /home/vps/redline-matrix/opus-v11/ledger.ndjson
+  L01 #1: held  rc=100 success.complete  credits=35.32  78.7s
+  L02 #1: held  rc=100 success.complete  credits=52.34  105.9s
+  L03 #1: held  rc=100 success.complete  credits=33.77  73.7s
+
+result
+  L01   held
+  L02   held
+  L03   held
+credits spent this run: 121.43
+redline · kane-cli 0.10.0 · 4 case(s) · target opus-v11 http://localhost:5184 · cap 900 credits
+ledger → /home/vps/redline-matrix/opus-v11/ledger.ndjson
+  S01 #1: held  rc=100 success.complete  credits=35.71  83.3s
+  S02 #1: held  rc=100 success.complete  credits=37.91  82.7s
+  S03 #1: held  rc=100 success.complete  credits=34.91  78.8s
+  S04 #1: held  rc=100 success.complete  credits=48.55  84.6s
+
+result
+  S01   held
+  S02   held
+  S03   held
+  S04   held
+credits spent this run: 157.07
+redline · kane-cli 0.10.0 · 3 case(s) · target opus-v11 http://localhost:5184 · cap 900 credits
+ledger → /home/vps/redline-matrix/opus-v11/ledger.ndjson
+  P01 #1: held  rc=100 success.complete  credits=69.56  124.6s
+  P02 #1: held  rc=100 success.complete  credits=65.66  136.6s
+  P03 #1: held  rc=100 success.complete  credits=133.20  250.8s
+
+result
+  P01   held
+  P02   held
+  P03   held
+credits spent this run: 268.41
+redline · kane-cli 0.10.0 · 3 case(s) · target opus-v11 http://localhost:5184 · cap 900 credits
+ledger → /home/vps/redline-matrix/opus-v11/ledger.ndjson
+  N01 #1: held  rc=100 success.complete  credits=36.90  88.8s
+  N02 #1: held  rc=100 success.complete  credits=48.08  98.7s
+  N03 #1: held  rc=100 success.complete  credits=71.65  126.1s
+
+result
+  N01   held
+  N02   held
+  N03   held
+credits spent this run: 156.64
+redline · kane-cli 0.10.0 · 2 case(s) · target opus-v11 http://localhost:5184 · cap 900 credits
+ledger → /home/vps/redline-matrix/opus-v11/ledger.ndjson
+  R01 #1: held  rc=100 success.complete  credits=52.21  76.2s
+  R02 #1: held  rc=100 success.complete  credits=69.71  144.5s
+
+result
+  R01   held
+  R02   held
+credits spent this run: 121.92
+redline · kane-cli 0.10.0 · 9 case(s) · target opus-v11 http://localhost:5184 · cap 900 credits
+ledger → /home/vps/redline-matrix/opus-v11/ledger.ndjson
+  V01 #1: held  rc=100 success.complete  credits=50.56  99.1s
+  V02 #1: held  rc=100 success.complete  credits=50.20  94.9s
+  V03 #1: held  rc=100 success.complete  credits=48.64  96.5s
+  V04 #1: held  rc=100 success.complete  credits=53.35  108.3s
+  V05 #1: held  rc=100 success.complete  credits=49.68  98.8s
+  V06 #1: held  rc=100 success.complete  credits=37.32  84.8s
+  V07 #1: held  rc=100 success.complete  credits=38.73  85.6s
+  V08 #1: held  rc=100 success.complete  credits=35.86  80.5s
+  V09 #1: held  rc=100 success.complete  credits=80.78  152.8s
+
+result
+  V01   held
+  V02   held
+  V03   held
+  V04   held
+  V05   held
+  V06   held
+  V07   held
+  V08   held
+  V09   held
+credits spent this run: 445.12
+matrix end 2026-10-31T03:14:44+01:00 · Available credits: 3926.2616
+| Case | Invariant | haiku-gated-v11 | haiku-oneshot | opus-oneshot | opus-v11 | sonnet-oneshot |
+|---|---|---|---|---|---|---|
+| V01 | V1.1 | ✅ held | · | · | ✅ held | · |
+| V02 | V1.1 | ✅ held | · | · | ✅ held | · |
+| V03 | V1.1 | ✅ held | · | · | ✅ held | · |
+| V04 | V1.1 | ✅ held | · | · | ✅ held | · |
+| V05 | V1.1 | ✅ held | · | · | ✅ held | · |
+| V06 | V1.1 | ✅ held | · | · | ✅ held | · |
+| V07 | V1.1 | ✅ held | · | · | ✅ held | · |
+| V08 | V1.1 | ✅ held | · | · | ✅ held | · |
+| V09 | V1.1 | ✅ held | · | · | ✅ held | · |
+| C01 | INV-01 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| C02 | INV-01 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| C03 | INV-01 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| C04 | INV-01 | · | ❌ **exploit** | ✅ held | ✅ held | ❌ **exploit** |
+| C05 | INV-01 | · | ❌ **exploit** | ✅ held | ✅ held | ❌ **exploit** |
+| C06 | INV-01 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| C07 | INV-01 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| C08 | INV-01 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| C09 | INV-01 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| C10 | INV-01 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| L01 | INV-02 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| L02 | INV-02 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| L03 | INV-02 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| S01 | INV-03 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| S02 | INV-03 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| S03 | INV-03 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| S04 | INV-03 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| P01 | INV-04 | · | ✅ held | ✅ held | ✅ held | ❌ **exploit** |
+| P02 | INV-04 | · | ✅ held | ✅ held | ✅ held | ❌ **exploit** |
+| P03 | INV-04 | · | ✅ held | ✅ held | ✅ held | ❌ **exploit** |
+| N01 | INV-05 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| N02 | INV-05 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| N03 | INV-05 | · | ✅ held | ✅ held | ✅ held | ❔ inconclusive |
+| R01 | INV-06 | · | ✅ held | ✅ held | ✅ held | ✅ held |
+| R02 | INV-06 | · | ✅ held | ✅ held | ✅ held | · |
+
+**haiku-gated-v11**: 9/9 held, 0 exploit(s), 453 credits · **haiku-oneshot**: 23/25 held, 2 exploit(s), 1280 credits · **opus-oneshot**: 25/25 held, 0 exploit(s), 1244 credits · **opus-v11**: 34/34 held, 0 exploit(s), 1655 credits · **sonnet-oneshot**: 18/25 held, 5 exploit(s), 1464 credits

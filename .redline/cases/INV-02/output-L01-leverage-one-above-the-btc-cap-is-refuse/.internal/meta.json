@@ -1,0 +1,18 @@
+{
+  "test_id": "27324907-0517-42d1-ba0d-fee0ffe35baf",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "L01-leverage-one-above-the-btc-cap-is-refuse",
+  "commit_id": "25f63f56-ae47-48f6-a138-f547381238c1",
+  "testcase_id": "01M67SBTVZHJEMJXMXBZC3S84G",
+  "executions": [
+    {
+      "execution_id": "78f352f8-9d93-4c96-8162-9c3d0456ed11",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:33:16.479Z"
+    }
+  ]
+}

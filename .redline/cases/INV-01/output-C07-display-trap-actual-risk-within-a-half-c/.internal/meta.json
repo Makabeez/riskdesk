@@ -1,0 +1,18 @@
+{
+  "commit_id": "196b5ecb-8590-4054-a49b-2184c523d91f",
+  "test_id": "d391da28-bfbd-4c76-b564-989a963f00ba",
+  "testcase_id": "01M5ZKFRH9C0HYDD9D985SYMN5",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "C07-display-trap-actual-risk-within-a-half-c",
+  "executions": [
+    {
+      "execution_id": "a7d30422-4873-4d72-a30e-4681f085eb48",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:27:51.957Z"
+    }
+  ]
+}

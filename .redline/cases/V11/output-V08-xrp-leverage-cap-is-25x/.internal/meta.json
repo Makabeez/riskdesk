@@ -1,0 +1,18 @@
+{
+  "commit_id": "09225024-4536-485f-90ce-057e26bba6ba",
+  "test_id": "1f2cf744-16a8-4e9c-b43e-da8a2f15142b",
+  "testcase_id": "01M5ZQ23G27BQD83QNM4BFHJWH",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "V08-xrp-leverage-cap-is-25x",
+  "executions": [
+    {
+      "execution_id": "657988df-4f52-4dae-b6e4-76c3f73b21aa",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T02:12:07.900Z"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "test_id": "8668215c-e290-4ea4-8fd5-9d02c24125d3",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "N03-1e9-and-letters-in-price-fields",
+  "commit_id": "b95089a7-d368-4e04-8673-f334efa4a487",
+  "testcase_id": "01M67TKEP71Y0QT6EZBNB5REN1",
+  "executions": [
+    {
+      "execution_id": "7f17b938-3dff-43ab-9a82-6c5202d28f57",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:55:42.002Z"
+    }
+  ]
+}

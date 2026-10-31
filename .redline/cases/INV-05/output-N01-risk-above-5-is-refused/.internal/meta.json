@@ -1,0 +1,18 @@
+{
+  "test_id": "baaecac7-8701-4ee7-b85f-3fb046030b73",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "N01-risk-above-5-is-refused",
+  "commit_id": "3b850ca2-5088-4c26-a388-cf02ed790458",
+  "testcase_id": "01M67TDP2P07XXJYSFM7K8BCGY",
+  "executions": [
+    {
+      "execution_id": "eec2af27-6e1d-4404-abc5-3cc1912dcea8",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:51:55.698Z"
+    }
+  ]
+}

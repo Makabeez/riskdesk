@@ -1,0 +1,18 @@
+{
+  "test_id": "a9a7a0ca-d927-4533-b0aa-e6b3044a2859",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "N02-zero-balance-is-refused",
+  "commit_id": "0a6255dd-7150-43ff-a8bf-441273b43254",
+  "testcase_id": "01M67TGDGKW9Y2GKXR7KY42A1B",
+  "executions": [
+    {
+      "execution_id": "9d5611ef-7c29-4a42-a939-81e89109ae48",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:53:34.767Z"
+    }
+  ]
+}

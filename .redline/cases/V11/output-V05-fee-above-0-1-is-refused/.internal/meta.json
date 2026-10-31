@@ -1,0 +1,18 @@
+{
+  "commit_id": "62ffbf97-bfec-4408-b588-d6cc8d1c2a55",
+  "test_id": "fc926da8-6219-4196-b9aa-09251326ecf7",
+  "testcase_id": "01M5ZPRWCPG40PKP7TN445SJQ7",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "V05-fee-above-0-1-is-refused",
+  "executions": [
+    {
+      "execution_id": "73b5d122-a1e1-4458-a060-a3fd4bc2ad69",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T02:07:54.745Z"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "test_id": "a79b2659-4da1-48c6-9402-26f7242cac4e",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "S02-short-with-the-stop-below-entry-is-refus",
+  "commit_id": "c61c8648-ca74-4d61-b185-4e041f97c503",
+  "testcase_id": "01M67SPC3C4BZ72AH1K7X8K84R",
+  "executions": [
+    {
+      "execution_id": "94aea03d-6fab-45d7-a78f-0565b7e42671",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:39:05.682Z"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "test_id": "8333438d-8846-4bd3-a908-308198119724",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "S01-long-with-the-stop-above-entry-is-refuse",
+  "commit_id": "6936d8c8-73a0-4b77-9fc4-7063cfe0c006",
+  "testcase_id": "01M67SKT05WP2M0NM6AG9BS06R",
+  "executions": [
+    {
+      "execution_id": "3241b6a9-6a7c-41a5-b785-c26909afd6bb",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:37:41.923Z"
+    }
+  ]
+}

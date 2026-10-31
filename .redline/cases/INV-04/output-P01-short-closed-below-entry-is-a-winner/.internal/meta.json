@@ -1,0 +1,18 @@
+{
+  "test_id": "e8872421-b6e7-4ad0-80a7-4d51c9099143",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "P01-short-closed-below-entry-is-a-winner",
+  "commit_id": "f48f5cd9-dec6-4c62-b0dd-488789f82be0",
+  "testcase_id": "01M67SXZB1WP6HK4NPRE0ATQWF",
+  "executions": [
+    {
+      "execution_id": "62d8a7b0-7c68-419e-91bb-b8df1b64ef2a",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:43:56.640Z"
+    }
+  ]
+}

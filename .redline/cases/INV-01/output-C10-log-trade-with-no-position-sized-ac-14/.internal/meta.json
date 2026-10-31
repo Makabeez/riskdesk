@@ -1,0 +1,18 @@
+{
+  "commit_id": "71c6fa42-64ec-40db-9b90-e4d639e667c2",
+  "test_id": "781de393-c927-431c-924f-65b23985c3dd",
+  "testcase_id": "01M5ZKRG3ZSKH40PJEDPECJ0PP",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "C10-log-trade-with-no-position-sized-ac-14",
+  "executions": [
+    {
+      "execution_id": "6d1598e3-21aa-4137-bd05-bf41d49cba55",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:32:04.383Z"
+    }
+  ]
+}

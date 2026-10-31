@@ -1,0 +1,18 @@
+{
+  "test_id": "912b41e7-221e-47a7-a01d-be79f04b0bf5",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "P02-long-closed-below-entry-is-a-loser",
+  "commit_id": "6e72e7fa-826d-4831-a512-2a1644c56fe0",
+  "testcase_id": "01M67T1SQ3HXG45JJ1YWFY8Q7R",
+  "executions": [
+    {
+      "execution_id": "c4a328ca-6f2d-42ef-a2e7-ea4a69d00d89",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:46:14.007Z"
+    }
+  ]
+}

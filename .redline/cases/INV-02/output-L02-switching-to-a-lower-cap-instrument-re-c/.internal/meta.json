@@ -1,0 +1,18 @@
+{
+  "test_id": "0fd721d9-a266-4c32-8316-883d56deb354",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "L02-switching-to-a-lower-cap-instrument-re-c",
+  "commit_id": "a17e9cd0-dda9-4c77-a363-f04549ed1acb",
+  "testcase_id": "01M67SE8FPZM20EV3CQ7T5P2FP",
+  "executions": [
+    {
+      "execution_id": "2183068d-876c-48aa-9134-9f36c21c086f",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:35:03.117Z"
+    }
+  ]
+}

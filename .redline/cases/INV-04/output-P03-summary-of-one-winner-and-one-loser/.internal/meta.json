@@ -1,0 +1,18 @@
+{
+  "test_id": "b92583c2-2f79-4d1c-98c7-b9982bf3b2a7",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "P03-summary-of-one-winner-and-one-loser",
+  "commit_id": "a6ab5daf-9ef0-4f2a-8103-380caf02aa8c",
+  "testcase_id": "01M67T5ZXRT2ZEAVTTBYNQF3D0",
+  "executions": [
+    {
+      "execution_id": "b90b7a64-fc44-43ca-a07c-66b0b7c1c056",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:50:24.549Z"
+    }
+  ]
+}

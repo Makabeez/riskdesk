@@ -1,0 +1,18 @@
+{
+  "commit_id": "a0e80531-1f13-430a-ac5b-7eb82645f5b6",
+  "test_id": "1614ecd6-ae87-429f-9ff8-c99d32e3787c",
+  "testcase_id": "01M5ZPE3DY9MC7ZS0ECTJP4JVW",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "V02-fee-example-on-btc-0-094",
+  "executions": [
+    {
+      "execution_id": "2888f23a-548e-4d00-85a9-a9fb980356aa",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T02:02:48.502Z"
+    }
+  ]
+}

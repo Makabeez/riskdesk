@@ -1,0 +1,18 @@
+{
+  "commit_id": "14a7c77e-5d64-4f80-bc19-880343fddb1d",
+  "test_id": "54733c7d-5861-4441-ab63-083bd7fe5ecc",
+  "testcase_id": "01M5ZPWCTT87PRCRZ4761T737M",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "V06-xrp-sizes-in-whole-units",
+  "executions": [
+    {
+      "execution_id": "077128e3-d67b-40ff-b55c-57cdd14d1d0d",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T02:09:20.268Z"
+    }
+  ]
+}

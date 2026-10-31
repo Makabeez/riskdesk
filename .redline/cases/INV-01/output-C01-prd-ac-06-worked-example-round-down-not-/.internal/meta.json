@@ -1,0 +1,18 @@
+{
+  "commit_id": "f86f603d-323b-4106-80a7-cb6ba4e379ff",
+  "test_id": "b639984a-5d72-4b78-87c8-71fa242fc657",
+  "testcase_id": "01M5ZJKJ1W3ZR82N9427YJ2G47",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "C01-prd-ac-06-worked-example-round-down-not-",
+  "executions": [
+    {
+      "execution_id": "7b930a5e-2a5b-436a-92de-dcb948d940c5",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:19:37.304Z"
+    }
+  ]
+}

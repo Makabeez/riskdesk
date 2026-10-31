@@ -1,0 +1,18 @@
+{
+  "test_id": "bda2975c-af74-4cf0-b7dc-415ff7d9ff07",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "S03-stop-equal-to-entry-is-refused",
+  "commit_id": "724bdf77-f5de-4bea-93e0-4d92dc55ee1b",
+  "testcase_id": "01M67SRXN93ACSJGXBXJDKT69D",
+  "executions": [
+    {
+      "execution_id": "2479a99d-2bcc-474e-8041-3d3b0e5350d6",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:40:25.473Z"
+    }
+  ]
+}

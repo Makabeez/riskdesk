@@ -1,0 +1,18 @@
+{
+  "commit_id": "eb1449f1-a742-4ce6-8de9-40d540a8991a",
+  "test_id": "7a53ceef-4c1e-444b-b3d9-e8ae4c18900d",
+  "testcase_id": "01M5ZK6484VC7VV7SGVWZZ2NYZ",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "C03-prd-ac-09-worked-example-short-on-sol",
+  "executions": [
+    {
+      "execution_id": "464c5129-a453-4a87-959b-a22fb68f369c",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:22:23.609Z"
+    }
+  ]
+}

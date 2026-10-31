@@ -1,0 +1,18 @@
+{
+  "test_id": "81d4acdc-54cd-436b-ac4a-4fdd10ead2d9",
+  "project_id": "01M4Y30GYTJ9XTBJA3BBJPA5A8",
+  "folder_id": "01M4Y30H2QZZ0NYFHV20GH0VZ0",
+  "org_id": "3382671",
+  "session_name": "R02-logged-trade-survives-reload-deleted-tra",
+  "commit_id": "61aa0ffd-6358-42ac-b981-b1cdd43abba7",
+  "testcase_id": "01M67TSPBCACTF6CW8WKRQ9M3T",
+  "executions": [
+    {
+      "execution_id": "98dfd124-bb22-43e8-ab49-a79e9bc6609d",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-10-31T01:59:24.598Z"
+    }
+  ]
+}
