@@ -12,7 +12,7 @@ npm run dev -- --port 5184 &          # the port the committed recordings were a
 npx -y github:Makabeez/kane-redline run .redline/cases --url http://localhost:5184 --target judge --max-credits 60
 ```
 
-All 34 cases are committed with Kane's recordings for this exact app, so they replay instead of re-authoring: about 0 credits and ~16 s per case. Then `npx -y github:Makabeez/kane-redline report` prints the scoreboard, your run included.
+All 34 cases are committed with Kane's recordings for this exact app, so they replay instead of re-authoring. Measured from a fresh clone of this public repo on 31 Oct: **34/34 held, 25 cases at 0.00 credits, 9 re-healed one step, 50.77 credits in total** (authoring the same suite cost ~1,650). Then `npx -y github:Makabeez/kane-redline report` prints the scoreboard, your run included.
 
 ## What's where
 
