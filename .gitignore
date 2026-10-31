@@ -1,4 +1,9 @@
-# Kane evidence packs (screenshots/video, ~3 MB per run) stay local
-.redline/cases/**/.testmuai/
-# Kane internals: may hold signed artifact URLs; reviewed before any publish
-.redline/cases/**/output-*/.internal/
+# app
+node_modules
+dist
+*.local
+e2e/*.png
+# Kane evidence packs (screenshots/video, ~3 MB per run) stay local; Test Manager links cover them
+.testmuai/
+# Redline gate state is per machine
+.redline/state.json
